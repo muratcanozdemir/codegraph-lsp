@@ -1,0 +1,3613 @@
+{
+  "symbols": [
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py",
+      "name": "d",
+      "qualified_name": "d",
+      "kind": "variable",
+      "language": "python",
+      "line": 2
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py",
+      "name": "edges",
+      "qualified_name": "edges",
+      "kind": "variable",
+      "language": "python",
+      "line": 3
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py",
+      "name": "shapes",
+      "qualified_name": "shapes",
+      "kind": "variable",
+      "language": "python",
+      "line": 5
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py",
+      "name": "nodes",
+      "qualified_name": "nodes",
+      "kind": "variable",
+      "language": "python",
+      "line": 8
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py",
+      "name": "e",
+      "qualified_name": "e",
+      "kind": "variable",
+      "language": "python",
+      "line": 9
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py",
+      "name": "role",
+      "qualified_name": "role",
+      "kind": "variable",
+      "language": "python",
+      "line": 10
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py",
+      "name": "name",
+      "qualified_name": "name",
+      "kind": "variable",
+      "language": "python",
+      "line": 11
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py",
+      "name": "kind",
+      "qualified_name": "kind",
+      "kind": "variable",
+      "language": "python",
+      "line": 13
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py",
+      "name": "shape",
+      "qualified_name": "shape",
+      "kind": "variable",
+      "language": "python",
+      "line": 18
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py",
+      "name": "short",
+      "qualified_name": "short",
+      "kind": "variable",
+      "language": "python",
+      "line": 19
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py",
+      "name": "pw",
+      "qualified_name": "pw",
+      "kind": "variable",
+      "language": "python",
+      "line": 22
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py",
+      "name": "style",
+      "qualified_name": "style",
+      "kind": "variable",
+      "language": "python",
+      "line": 23
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "log",
+      "qualified_name": "log",
+      "kind": "variable",
+      "language": "python",
+      "line": 23
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "CouplingPair",
+      "qualified_name": "CouplingPair",
+      "kind": "class",
+      "language": "python",
+      "line": 27
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "source",
+      "qualified_name": "CouplingPair.source",
+      "kind": "variable",
+      "language": "python",
+      "line": 28
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "target",
+      "qualified_name": "CouplingPair.target",
+      "kind": "variable",
+      "language": "python",
+      "line": 29
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "weight",
+      "qualified_name": "CouplingPair.weight",
+      "kind": "variable",
+      "language": "python",
+      "line": 30
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "Community",
+      "qualified_name": "Community",
+      "kind": "class",
+      "language": "python",
+      "line": 34
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "id",
+      "qualified_name": "Community.id",
+      "kind": "variable",
+      "language": "python",
+      "line": 35
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "files",
+      "qualified_name": "Community.files",
+      "kind": "variable",
+      "language": "python",
+      "line": 36
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "internal_edges",
+      "qualified_name": "Community.internal_edges",
+      "kind": "variable",
+      "language": "python",
+      "line": 37
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "languages",
+      "qualified_name": "Community.languages",
+      "kind": "variable",
+      "language": "python",
+      "line": 38
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "AnalysisResult",
+      "qualified_name": "AnalysisResult",
+      "kind": "class",
+      "language": "python",
+      "line": 42
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "communities",
+      "qualified_name": "AnalysisResult.communities",
+      "kind": "variable",
+      "language": "python",
+      "line": 43
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "modularity",
+      "qualified_name": "AnalysisResult.modularity",
+      "kind": "variable",
+      "language": "python",
+      "line": 44
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "top_coupling",
+      "qualified_name": "AnalysisResult.top_coupling",
+      "kind": "variable",
+      "language": "python",
+      "line": 45
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "node_count",
+      "qualified_name": "AnalysisResult.node_count",
+      "kind": "variable",
+      "language": "python",
+      "line": 46
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "edge_count",
+      "qualified_name": "AnalysisResult.edge_count",
+      "kind": "variable",
+      "language": "python",
+      "line": 47
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "symbol_count",
+      "qualified_name": "AnalysisResult.symbol_count",
+      "kind": "variable",
+      "language": "python",
+      "line": 48
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "symbol_graph",
+      "qualified_name": "AnalysisResult.symbol_graph",
+      "kind": "variable",
+      "language": "python",
+      "line": 49
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "symbol_communities",
+      "qualified_name": "AnalysisResult.symbol_communities",
+      "kind": "variable",
+      "language": "python",
+      "line": 50
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "to_dict",
+      "qualified_name": "AnalysisResult.to_dict",
+      "kind": "method",
+      "language": "python",
+      "line": 53
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "print_summary",
+      "qualified_name": "AnalysisResult.print_summary",
+      "kind": "method",
+      "language": "python",
+      "line": 80
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "root",
+      "qualified_name": "AnalysisResult.print_summary.root",
+      "kind": "variable",
+      "language": "python",
+      "line": 80
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "c",
+      "qualified_name": "AnalysisResult.print_summary.c",
+      "kind": "variable",
+      "language": "python",
+      "line": 88
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "langs",
+      "qualified_name": "AnalysisResult.print_summary.langs",
+      "kind": "variable",
+      "language": "python",
+      "line": 89
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "f",
+      "qualified_name": "AnalysisResult.print_summary.f",
+      "kind": "variable",
+      "language": "python",
+      "line": 92
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "display",
+      "qualified_name": "AnalysisResult.print_summary.display",
+      "kind": "variable",
+      "language": "python",
+      "line": 93
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "cp",
+      "qualified_name": "AnalysisResult.print_summary.cp",
+      "kind": "variable",
+      "language": "python",
+      "line": 100
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "s",
+      "qualified_name": "AnalysisResult.print_summary.s",
+      "kind": "variable",
+      "language": "python",
+      "line": 101
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "t",
+      "qualified_name": "AnalysisResult.print_summary.t",
+      "kind": "variable",
+      "language": "python",
+      "line": 102
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "sc",
+      "qualified_name": "AnalysisResult.print_summary.sc",
+      "kind": "variable",
+      "language": "python",
+      "line": 107
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "_relative",
+      "qualified_name": "_relative",
+      "kind": "function",
+      "language": "python",
+      "line": 119
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "uri_or_path",
+      "qualified_name": "_relative.uri_or_path",
+      "kind": "variable",
+      "language": "python",
+      "line": 119
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "root",
+      "qualified_name": "_relative.root",
+      "kind": "variable",
+      "language": "python",
+      "line": 119
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "path",
+      "qualified_name": "_relative.path",
+      "kind": "variable",
+      "language": "python",
+      "line": 120
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "build_file_graph",
+      "qualified_name": "build_file_graph",
+      "kind": "function",
+      "language": "python",
+      "line": 131
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "sg",
+      "qualified_name": "build_file_graph.sg",
+      "kind": "variable",
+      "language": "python",
+      "line": 131
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "file_edges",
+      "qualified_name": "build_file_graph.file_edges",
+      "kind": "variable",
+      "language": "python",
+      "line": 133
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "edge",
+      "qualified_name": "build_file_graph.edge",
+      "kind": "variable",
+      "language": "python",
+      "line": 134
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "src",
+      "qualified_name": "build_file_graph.src",
+      "kind": "variable",
+      "language": "python",
+      "line": 135
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "tgt",
+      "qualified_name": "build_file_graph.tgt",
+      "kind": "variable",
+      "language": "python",
+      "line": 136
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "pair",
+      "qualified_name": "build_file_graph.pair",
+      "kind": "variable",
+      "language": "python",
+      "line": 139
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "all_files",
+      "qualified_name": "build_file_graph.all_files",
+      "kind": "variable",
+      "language": "python",
+      "line": 142
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "g",
+      "qualified_name": "build_file_graph.g",
+      "kind": "variable",
+      "language": "python",
+      "line": 146
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "idx",
+      "qualified_name": "build_file_graph.idx",
+      "kind": "variable",
+      "language": "python",
+      "line": 148
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "edges",
+      "qualified_name": "build_file_graph.edges",
+      "kind": "variable",
+      "language": "python",
+      "line": 150
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "weights",
+      "qualified_name": "build_file_graph.weights",
+      "kind": "variable",
+      "language": "python",
+      "line": 151
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "s",
+      "qualified_name": "build_file_graph.s",
+      "kind": "variable",
+      "language": "python",
+      "line": 152
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "t",
+      "qualified_name": "build_file_graph.t",
+      "kind": "variable",
+      "language": "python",
+      "line": 152
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "w",
+      "qualified_name": "build_file_graph.w",
+      "kind": "variable",
+      "language": "python",
+      "line": 152
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "build_symbol_graph",
+      "qualified_name": "build_symbol_graph",
+      "kind": "function",
+      "language": "python",
+      "line": 164
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "sg",
+      "qualified_name": "build_symbol_graph.sg",
+      "kind": "variable",
+      "language": "python",
+      "line": 164
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "resolved",
+      "qualified_name": "build_symbol_graph.resolved",
+      "kind": "variable",
+      "language": "python",
+      "line": 166
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "all_syms",
+      "qualified_name": "build_symbol_graph.all_syms",
+      "kind": "variable",
+      "language": "python",
+      "line": 168
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "g",
+      "qualified_name": "build_symbol_graph.g",
+      "kind": "variable",
+      "language": "python",
+      "line": 172
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "idx",
+      "qualified_name": "build_symbol_graph.idx",
+      "kind": "variable",
+      "language": "python",
+      "line": 179
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "edge_weights",
+      "qualified_name": "build_symbol_graph.edge_weights",
+      "kind": "variable",
+      "language": "python",
+      "line": 180
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "edge_types",
+      "qualified_name": "build_symbol_graph.edge_types",
+      "kind": "variable",
+      "language": "python",
+      "line": 181
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "src",
+      "qualified_name": "build_symbol_graph.src",
+      "kind": "variable",
+      "language": "python",
+      "line": 182
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "tgt",
+      "qualified_name": "build_symbol_graph.tgt",
+      "kind": "variable",
+      "language": "python",
+      "line": 182
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "etype",
+      "qualified_name": "build_symbol_graph.etype",
+      "kind": "variable",
+      "language": "python",
+      "line": 182
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "si",
+      "qualified_name": "build_symbol_graph.si",
+      "kind": "variable",
+      "language": "python",
+      "line": 183
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "ti",
+      "qualified_name": "build_symbol_graph.ti",
+      "kind": "variable",
+      "language": "python",
+      "line": 183
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "key",
+      "qualified_name": "build_symbol_graph.key",
+      "kind": "variable",
+      "language": "python",
+      "line": 185
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "edges",
+      "qualified_name": "build_symbol_graph.edges",
+      "kind": "variable",
+      "language": "python",
+      "line": 190
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "analyze",
+      "qualified_name": "analyze",
+      "kind": "function",
+      "language": "python",
+      "line": 197
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "sg",
+      "qualified_name": "analyze.sg",
+      "kind": "variable",
+      "language": "python",
+      "line": 198
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "root",
+      "qualified_name": "analyze.root",
+      "kind": "variable",
+      "language": "python",
+      "line": 199
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "resolution",
+      "qualified_name": "analyze.resolution",
+      "kind": "variable",
+      "language": "python",
+      "line": 200
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "g",
+      "qualified_name": "analyze.g",
+      "kind": "variable",
+      "language": "python",
+      "line": 203
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "partition_type",
+      "qualified_name": "analyze.partition_type",
+      "kind": "variable",
+      "language": "python",
+      "line": 212
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "kwargs",
+      "qualified_name": "analyze.kwargs",
+      "kind": "variable",
+      "language": "python",
+      "line": 213
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "sg_graph",
+      "qualified_name": "analyze.sg_graph",
+      "kind": "variable",
+      "language": "python",
+      "line": 222
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "symbol_edges",
+      "qualified_name": "analyze.symbol_edges",
+      "kind": "variable",
+      "language": "python",
+      "line": 223
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "e",
+      "qualified_name": "analyze.e",
+      "kind": "variable",
+      "language": "python",
+      "line": 225
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "partition",
+      "qualified_name": "analyze.partition",
+      "kind": "variable",
+      "language": "python",
+      "line": 235
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "file_languages",
+      "qualified_name": "analyze.file_languages",
+      "kind": "variable",
+      "language": "python",
+      "line": 238
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "sym",
+      "qualified_name": "analyze.sym",
+      "kind": "variable",
+      "language": "python",
+      "line": 239
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "communities",
+      "qualified_name": "analyze.communities",
+      "kind": "variable",
+      "language": "python",
+      "line": 242
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "cid",
+      "qualified_name": "analyze.cid",
+      "kind": "variable",
+      "language": "python",
+      "line": 243
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "members",
+      "qualified_name": "analyze.members",
+      "kind": "variable",
+      "language": "python",
+      "line": 243
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "files",
+      "qualified_name": "analyze.files",
+      "kind": "variable",
+      "language": "python",
+      "line": 244
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "subg",
+      "qualified_name": "analyze.subg",
+      "kind": "variable",
+      "language": "python",
+      "line": 246
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "internal",
+      "qualified_name": "analyze.internal",
+      "kind": "variable",
+      "language": "python",
+      "line": 247
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "langs",
+      "qualified_name": "analyze.langs",
+      "kind": "variable",
+      "language": "python",
+      "line": 248
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "coupling",
+      "qualified_name": "analyze.coupling",
+      "kind": "variable",
+      "language": "python",
+      "line": 259
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "symbol_communities",
+      "qualified_name": "analyze.symbol_communities",
+      "kind": "variable",
+      "language": "python",
+      "line": 269
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "save_report",
+      "qualified_name": "save_report",
+      "kind": "function",
+      "language": "python",
+      "line": 283
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "result",
+      "qualified_name": "save_report.result",
+      "kind": "variable",
+      "language": "python",
+      "line": 283
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "path",
+      "qualified_name": "save_report.path",
+      "kind": "variable",
+      "language": "python",
+      "line": 283
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "analyze_symbols",
+      "qualified_name": "analyze_symbols",
+      "kind": "function",
+      "language": "python",
+      "line": 288
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "sg",
+      "qualified_name": "analyze_symbols.sg",
+      "kind": "variable",
+      "language": "python",
+      "line": 289
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "root",
+      "qualified_name": "analyze_symbols.root",
+      "kind": "variable",
+      "language": "python",
+      "line": 290
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "resolution",
+      "qualified_name": "analyze_symbols.resolution",
+      "kind": "variable",
+      "language": "python",
+      "line": 291
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "call_weight",
+      "qualified_name": "analyze_symbols.call_weight",
+      "kind": "variable",
+      "language": "python",
+      "line": 292
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "ref_weight",
+      "qualified_name": "analyze_symbols.ref_weight",
+      "kind": "variable",
+      "language": "python",
+      "line": 293
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "resolved",
+      "qualified_name": "analyze_symbols.resolved",
+      "kind": "variable",
+      "language": "python",
+      "line": 296
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "all_syms",
+      "qualified_name": "analyze_symbols.all_syms",
+      "kind": "variable",
+      "language": "python",
+      "line": 298
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "g",
+      "qualified_name": "analyze_symbols.g",
+      "kind": "variable",
+      "language": "python",
+      "line": 302
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "idx",
+      "qualified_name": "analyze_symbols.idx",
+      "kind": "variable",
+      "language": "python",
+      "line": 308
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "edge_data",
+      "qualified_name": "analyze_symbols.edge_data",
+      "kind": "variable",
+      "language": "python",
+      "line": 309
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "src",
+      "qualified_name": "analyze_symbols.src",
+      "kind": "variable",
+      "language": "python",
+      "line": 310
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "tgt",
+      "qualified_name": "analyze_symbols.tgt",
+      "kind": "variable",
+      "language": "python",
+      "line": 310
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "etype",
+      "qualified_name": "analyze_symbols.etype",
+      "kind": "variable",
+      "language": "python",
+      "line": 310
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "si",
+      "qualified_name": "analyze_symbols.si",
+      "kind": "variable",
+      "language": "python",
+      "line": 311
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "ti",
+      "qualified_name": "analyze_symbols.ti",
+      "kind": "variable",
+      "language": "python",
+      "line": 311
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "key",
+      "qualified_name": "analyze_symbols.key",
+      "kind": "variable",
+      "language": "python",
+      "line": 314
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "w",
+      "qualified_name": "analyze_symbols.w",
+      "kind": "variable",
+      "language": "python",
+      "line": 315
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "edges",
+      "qualified_name": "analyze_symbols.edges",
+      "kind": "variable",
+      "language": "python",
+      "line": 321
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "partition_type",
+      "qualified_name": "analyze_symbols.partition_type",
+      "kind": "variable",
+      "language": "python",
+      "line": 325
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "kwargs",
+      "qualified_name": "analyze_symbols.kwargs",
+      "kind": "variable",
+      "language": "python",
+      "line": 326
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "partition",
+      "qualified_name": "analyze_symbols.partition",
+      "kind": "variable",
+      "language": "python",
+      "line": 331
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "communities",
+      "qualified_name": "analyze_symbols.communities",
+      "kind": "variable",
+      "language": "python",
+      "line": 333
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "cid",
+      "qualified_name": "analyze_symbols.cid",
+      "kind": "variable",
+      "language": "python",
+      "line": 334
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "members",
+      "qualified_name": "analyze_symbols.members",
+      "kind": "variable",
+      "language": "python",
+      "line": 334
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "syms",
+      "qualified_name": "analyze_symbols.syms",
+      "kind": "variable",
+      "language": "python",
+      "line": 335
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "m",
+      "qualified_name": "analyze_symbols.m",
+      "kind": "variable",
+      "language": "python",
+      "line": 336
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "name",
+      "qualified_name": "analyze_symbols.name",
+      "kind": "variable",
+      "language": "python",
+      "line": 337
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "uri",
+      "qualified_name": "analyze_symbols.uri",
+      "kind": "variable",
+      "language": "python",
+      "line": 338
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "subg",
+      "qualified_name": "analyze_symbols.subg",
+      "kind": "variable",
+      "language": "python",
+      "line": 352
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "name": "cohesion",
+      "qualified_name": "analyze_symbols.cohesion",
+      "kind": "variable",
+      "language": "python",
+      "line": 353
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "log",
+      "qualified_name": "log",
+      "kind": "variable",
+      "language": "python",
+      "line": 17
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "_HEADER_SEP",
+      "qualified_name": "_HEADER_SEP",
+      "kind": "constant",
+      "language": "python",
+      "line": 19
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "_CONTENT_LENGTH",
+      "qualified_name": "_CONTENT_LENGTH",
+      "kind": "constant",
+      "language": "python",
+      "line": 20
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "ServerCapabilities",
+      "qualified_name": "ServerCapabilities",
+      "kind": "class",
+      "language": "python",
+      "line": 24
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "document_symbol",
+      "qualified_name": "ServerCapabilities.document_symbol",
+      "kind": "variable",
+      "language": "python",
+      "line": 25
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "references",
+      "qualified_name": "ServerCapabilities.references",
+      "kind": "variable",
+      "language": "python",
+      "line": 26
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "call_hierarchy",
+      "qualified_name": "ServerCapabilities.call_hierarchy",
+      "kind": "variable",
+      "language": "python",
+      "line": 27
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "workspace_symbol",
+      "qualified_name": "ServerCapabilities.workspace_symbol",
+      "kind": "variable",
+      "language": "python",
+      "line": 28
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "LSPClient",
+      "qualified_name": "LSPClient",
+      "kind": "class",
+      "language": "python",
+      "line": 31
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "__init__",
+      "qualified_name": "LSPClient.__init__",
+      "kind": "method",
+      "language": "python",
+      "line": 34
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "cmd",
+      "qualified_name": "LSPClient.__init__.cmd",
+      "kind": "variable",
+      "language": "python",
+      "line": 34
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "root",
+      "qualified_name": "LSPClient.__init__.root",
+      "kind": "variable",
+      "language": "python",
+      "line": 34
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "language_id",
+      "qualified_name": "LSPClient.__init__.language_id",
+      "kind": "variable",
+      "language": "python",
+      "line": 34
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "request",
+      "qualified_name": "LSPClient.request",
+      "kind": "method",
+      "language": "python",
+      "line": 54
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "method",
+      "qualified_name": "LSPClient.request.method",
+      "kind": "variable",
+      "language": "python",
+      "line": 54
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "params",
+      "qualified_name": "LSPClient.request.params",
+      "kind": "variable",
+      "language": "python",
+      "line": 54
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "timeout",
+      "qualified_name": "LSPClient.request.timeout",
+      "kind": "variable",
+      "language": "python",
+      "line": 54
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "rid",
+      "qualified_name": "LSPClient.request.rid",
+      "kind": "variable",
+      "language": "python",
+      "line": 57
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "event",
+      "qualified_name": "LSPClient.request.event",
+      "kind": "variable",
+      "language": "python",
+      "line": 58
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "entry",
+      "qualified_name": "LSPClient.request.entry",
+      "kind": "variable",
+      "language": "python",
+      "line": 64
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "notify",
+      "qualified_name": "LSPClient.notify",
+      "kind": "method",
+      "language": "python",
+      "line": 69
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "method",
+      "qualified_name": "LSPClient.notify.method",
+      "kind": "variable",
+      "language": "python",
+      "line": 69
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "params",
+      "qualified_name": "LSPClient.notify.params",
+      "kind": "variable",
+      "language": "python",
+      "line": 69
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "open_document",
+      "qualified_name": "LSPClient.open_document",
+      "kind": "method",
+      "language": "python",
+      "line": 72
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "uri",
+      "qualified_name": "LSPClient.open_document.uri",
+      "kind": "variable",
+      "language": "python",
+      "line": 72
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "text",
+      "qualified_name": "LSPClient.open_document.text",
+      "kind": "variable",
+      "language": "python",
+      "line": 72
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "close_document",
+      "qualified_name": "LSPClient.close_document",
+      "kind": "method",
+      "language": "python",
+      "line": 82
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "uri",
+      "qualified_name": "LSPClient.close_document.uri",
+      "kind": "variable",
+      "language": "python",
+      "line": 82
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "document_symbols",
+      "qualified_name": "LSPClient.document_symbols",
+      "kind": "method",
+      "language": "python",
+      "line": 85
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "uri",
+      "qualified_name": "LSPClient.document_symbols.uri",
+      "kind": "variable",
+      "language": "python",
+      "line": 85
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "result",
+      "qualified_name": "LSPClient.document_symbols.result",
+      "kind": "variable",
+      "language": "python",
+      "line": 86
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "references",
+      "qualified_name": "LSPClient.references",
+      "kind": "method",
+      "language": "python",
+      "line": 91
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "uri",
+      "qualified_name": "LSPClient.references.uri",
+      "kind": "variable",
+      "language": "python",
+      "line": 91
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "line",
+      "qualified_name": "LSPClient.references.line",
+      "kind": "variable",
+      "language": "python",
+      "line": 91
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "character",
+      "qualified_name": "LSPClient.references.character",
+      "kind": "variable",
+      "language": "python",
+      "line": 91
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "result",
+      "qualified_name": "LSPClient.references.result",
+      "kind": "variable",
+      "language": "python",
+      "line": 92
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "prepare_call_hierarchy",
+      "qualified_name": "LSPClient.prepare_call_hierarchy",
+      "kind": "method",
+      "language": "python",
+      "line": 99
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "uri",
+      "qualified_name": "LSPClient.prepare_call_hierarchy.uri",
+      "kind": "variable",
+      "language": "python",
+      "line": 99
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "line",
+      "qualified_name": "LSPClient.prepare_call_hierarchy.line",
+      "kind": "variable",
+      "language": "python",
+      "line": 99
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "character",
+      "qualified_name": "LSPClient.prepare_call_hierarchy.character",
+      "kind": "variable",
+      "language": "python",
+      "line": 99
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "result",
+      "qualified_name": "LSPClient.prepare_call_hierarchy.result",
+      "kind": "variable",
+      "language": "python",
+      "line": 102
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "outgoing_calls",
+      "qualified_name": "LSPClient.outgoing_calls",
+      "kind": "method",
+      "language": "python",
+      "line": 108
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "item",
+      "qualified_name": "LSPClient.outgoing_calls.item",
+      "kind": "variable",
+      "language": "python",
+      "line": 108
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "result",
+      "qualified_name": "LSPClient.outgoing_calls.result",
+      "kind": "variable",
+      "language": "python",
+      "line": 111
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "shutdown",
+      "qualified_name": "LSPClient.shutdown",
+      "kind": "method",
+      "language": "python",
+      "line": 114
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "_initialize",
+      "qualified_name": "LSPClient._initialize",
+      "kind": "method",
+      "language": "python",
+      "line": 126
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "result",
+      "qualified_name": "LSPClient._initialize.result",
+      "kind": "variable",
+      "language": "python",
+      "line": 127
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "caps",
+      "qualified_name": "LSPClient._initialize.caps",
+      "kind": "variable",
+      "language": "python",
+      "line": 145
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "_send",
+      "qualified_name": "LSPClient._send",
+      "kind": "method",
+      "language": "python",
+      "line": 161
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "msg",
+      "qualified_name": "LSPClient._send.msg",
+      "kind": "variable",
+      "language": "python",
+      "line": 161
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "body",
+      "qualified_name": "LSPClient._send.body",
+      "kind": "variable",
+      "language": "python",
+      "line": 162
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "header",
+      "qualified_name": "LSPClient._send.header",
+      "kind": "variable",
+      "language": "python",
+      "line": 163
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "stdin",
+      "qualified_name": "LSPClient._send.stdin",
+      "kind": "variable",
+      "language": "python",
+      "line": 164
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "_read_loop",
+      "qualified_name": "LSPClient._read_loop",
+      "kind": "method",
+      "language": "python",
+      "line": 169
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "stdout",
+      "qualified_name": "LSPClient._read_loop.stdout",
+      "kind": "variable",
+      "language": "python",
+      "line": 170
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "buf",
+      "qualified_name": "LSPClient._read_loop.buf",
+      "kind": "variable",
+      "language": "python",
+      "line": 172
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "chunk",
+      "qualified_name": "LSPClient._read_loop.chunk",
+      "kind": "variable",
+      "language": "python",
+      "line": 174
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "header_end",
+      "qualified_name": "LSPClient._read_loop.header_end",
+      "kind": "variable",
+      "language": "python",
+      "line": 181
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "header_block",
+      "qualified_name": "LSPClient._read_loop.header_block",
+      "kind": "variable",
+      "language": "python",
+      "line": 182
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "content_length",
+      "qualified_name": "LSPClient._read_loop.content_length",
+      "kind": "variable",
+      "language": "python",
+      "line": 183
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "line",
+      "qualified_name": "LSPClient._read_loop.line",
+      "kind": "variable",
+      "language": "python",
+      "line": 184
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "body_start",
+      "qualified_name": "LSPClient._read_loop.body_start",
+      "kind": "variable",
+      "language": "python",
+      "line": 190
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "body_end",
+      "qualified_name": "LSPClient._read_loop.body_end",
+      "kind": "variable",
+      "language": "python",
+      "line": 191
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "body",
+      "qualified_name": "LSPClient._read_loop.body",
+      "kind": "variable",
+      "language": "python",
+      "line": 194
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "msg",
+      "qualified_name": "LSPClient._read_loop.msg",
+      "kind": "variable",
+      "language": "python",
+      "line": 197
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "_dispatch",
+      "qualified_name": "LSPClient._dispatch",
+      "kind": "method",
+      "language": "python",
+      "line": 202
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "msg",
+      "qualified_name": "LSPClient._dispatch.msg",
+      "kind": "variable",
+      "language": "python",
+      "line": 202
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "entry",
+      "qualified_name": "LSPClient._dispatch.entry",
+      "kind": "variable",
+      "language": "python",
+      "line": 205
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "language_id",
+      "qualified_name": "LSPClient.language_id",
+      "kind": "variable",
+      "language": "python",
+      "line": 35
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "_root_uri",
+      "qualified_name": "LSPClient._root_uri",
+      "kind": "variable",
+      "language": "python",
+      "line": 36
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "_id",
+      "qualified_name": "LSPClient._id",
+      "kind": "variable",
+      "language": "python",
+      "line": 37
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "_pending",
+      "qualified_name": "LSPClient._pending",
+      "kind": "variable",
+      "language": "python",
+      "line": 38
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "_lock",
+      "qualified_name": "LSPClient._lock",
+      "kind": "variable",
+      "language": "python",
+      "line": 39
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "capabilities",
+      "qualified_name": "LSPClient.capabilities",
+      "kind": "variable",
+      "language": "python",
+      "line": 40
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "_proc",
+      "qualified_name": "LSPClient._proc",
+      "kind": "variable",
+      "language": "python",
+      "line": 42
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "name": "_reader",
+      "qualified_name": "LSPClient._reader",
+      "kind": "variable",
+      "language": "python",
+      "line": 48
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "log",
+      "qualified_name": "log",
+      "kind": "variable",
+      "language": "python",
+      "line": 17
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "SYMBOL_KIND_NAMES",
+      "qualified_name": "SYMBOL_KIND_NAMES",
+      "kind": "constant",
+      "language": "python",
+      "line": 20
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "INTERESTING_KINDS",
+      "qualified_name": "INTERESTING_KINDS",
+      "kind": "constant",
+      "language": "python",
+      "line": 29
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "Symbol",
+      "qualified_name": "Symbol",
+      "kind": "class",
+      "language": "python",
+      "line": 33
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "uri",
+      "qualified_name": "Symbol.uri",
+      "kind": "variable",
+      "language": "python",
+      "line": 34
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "name",
+      "qualified_name": "Symbol.name",
+      "kind": "variable",
+      "language": "python",
+      "line": 35
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "qualified_name",
+      "qualified_name": "Symbol.qualified_name",
+      "kind": "variable",
+      "language": "python",
+      "line": 36
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "kind",
+      "qualified_name": "Symbol.kind",
+      "kind": "variable",
+      "language": "python",
+      "line": 37
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "line",
+      "qualified_name": "Symbol.line",
+      "kind": "variable",
+      "language": "python",
+      "line": 38
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "character",
+      "qualified_name": "Symbol.character",
+      "kind": "variable",
+      "language": "python",
+      "line": 39
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "language",
+      "qualified_name": "Symbol.language",
+      "kind": "variable",
+      "language": "python",
+      "line": 40
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "kind_name",
+      "qualified_name": "Symbol.kind_name",
+      "kind": "method",
+      "language": "python",
+      "line": 43
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "file_path",
+      "qualified_name": "Symbol.file_path",
+      "kind": "method",
+      "language": "python",
+      "line": 47
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "uri",
+      "qualified_name": "Symbol.file_path.uri",
+      "kind": "variable",
+      "language": "python",
+      "line": 49
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "Edge",
+      "qualified_name": "Edge",
+      "kind": "class",
+      "language": "python",
+      "line": 56
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "source",
+      "qualified_name": "Edge.source",
+      "kind": "variable",
+      "language": "python",
+      "line": 57
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "target_uri",
+      "qualified_name": "Edge.target_uri",
+      "kind": "variable",
+      "language": "python",
+      "line": 58
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "target_line",
+      "qualified_name": "Edge.target_line",
+      "kind": "variable",
+      "language": "python",
+      "line": 59
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "edge_type",
+      "qualified_name": "Edge.edge_type",
+      "kind": "variable",
+      "language": "python",
+      "line": 60
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "SymbolGraph",
+      "qualified_name": "SymbolGraph",
+      "kind": "class",
+      "language": "python",
+      "line": 64
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "symbols",
+      "qualified_name": "SymbolGraph.symbols",
+      "kind": "variable",
+      "language": "python",
+      "line": 65
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "edges",
+      "qualified_name": "SymbolGraph.edges",
+      "kind": "variable",
+      "language": "python",
+      "line": 66
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "to_dict",
+      "qualified_name": "SymbolGraph.to_dict",
+      "kind": "method",
+      "language": "python",
+      "line": 68
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "from_dict",
+      "qualified_name": "SymbolGraph.from_dict",
+      "kind": "method",
+      "language": "python",
+      "line": 92
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "data",
+      "qualified_name": "SymbolGraph.from_dict.data",
+      "kind": "variable",
+      "language": "python",
+      "line": 92
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "language",
+      "qualified_name": "SymbolGraph.from_dict.language",
+      "kind": "variable",
+      "language": "python",
+      "line": 92
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "symbols",
+      "qualified_name": "SymbolGraph.from_dict.symbols",
+      "kind": "variable",
+      "language": "python",
+      "line": 93
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "sym_by_qn",
+      "qualified_name": "SymbolGraph.from_dict.sym_by_qn",
+      "kind": "variable",
+      "language": "python",
+      "line": 102
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "edges",
+      "qualified_name": "SymbolGraph.from_dict.edges",
+      "kind": "variable",
+      "language": "python",
+      "line": 103
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "e",
+      "qualified_name": "SymbolGraph.from_dict.e",
+      "kind": "variable",
+      "language": "python",
+      "line": 104
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "src",
+      "qualified_name": "SymbolGraph.from_dict.src",
+      "kind": "variable",
+      "language": "python",
+      "line": 105
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "Extractor",
+      "qualified_name": "Extractor",
+      "kind": "class",
+      "language": "python",
+      "line": 116
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "EXTENSIONS",
+      "qualified_name": "Extractor.EXTENSIONS",
+      "kind": "constant",
+      "language": "python",
+      "line": 119
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "__init__",
+      "qualified_name": "Extractor.__init__",
+      "kind": "method",
+      "language": "python",
+      "line": 124
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "clients",
+      "qualified_name": "Extractor.__init__.clients",
+      "kind": "variable",
+      "language": "python",
+      "line": 124
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "root",
+      "qualified_name": "Extractor.__init__.root",
+      "kind": "variable",
+      "language": "python",
+      "line": 124
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "extract",
+      "qualified_name": "Extractor.extract",
+      "kind": "method",
+      "language": "python",
+      "line": 128
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "files",
+      "qualified_name": "Extractor.extract.files",
+      "kind": "variable",
+      "language": "python",
+      "line": 128
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "graph",
+      "qualified_name": "Extractor.extract.graph",
+      "kind": "variable",
+      "language": "python",
+      "line": 129
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "lang",
+      "qualified_name": "Extractor.extract.lang",
+      "kind": "variable",
+      "language": "python",
+      "line": 130
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "client",
+      "qualified_name": "Extractor.extract.client",
+      "kind": "variable",
+      "language": "python",
+      "line": 130
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "lang_files",
+      "qualified_name": "Extractor.extract.lang_files",
+      "kind": "variable",
+      "language": "python",
+      "line": 132
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "total",
+      "qualified_name": "Extractor.extract.total",
+      "kind": "variable",
+      "language": "python",
+      "line": 139
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "i",
+      "qualified_name": "Extractor.extract.i",
+      "kind": "variable",
+      "language": "python",
+      "line": 142
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "fpath",
+      "qualified_name": "Extractor.extract.fpath",
+      "kind": "variable",
+      "language": "python",
+      "line": 142
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "_discover",
+      "qualified_name": "Extractor._discover",
+      "kind": "method",
+      "language": "python",
+      "line": 149
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "language",
+      "qualified_name": "Extractor._discover.language",
+      "kind": "variable",
+      "language": "python",
+      "line": 149
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "exts",
+      "qualified_name": "Extractor._discover.exts",
+      "kind": "variable",
+      "language": "python",
+      "line": 150
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "ext",
+      "qualified_name": "Extractor._discover.ext",
+      "kind": "variable",
+      "language": "python",
+      "line": 151
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "p",
+      "qualified_name": "Extractor._discover.p",
+      "kind": "variable",
+      "language": "python",
+      "line": 152
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "parts",
+      "qualified_name": "Extractor._discover.parts",
+      "kind": "variable",
+      "language": "python",
+      "line": 154
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "_extract_file",
+      "qualified_name": "Extractor._extract_file",
+      "kind": "method",
+      "language": "python",
+      "line": 164
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "client",
+      "qualified_name": "Extractor._extract_file.client",
+      "kind": "variable",
+      "language": "python",
+      "line": 166
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "fpath",
+      "qualified_name": "Extractor._extract_file.fpath",
+      "kind": "variable",
+      "language": "python",
+      "line": 167
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "language",
+      "qualified_name": "Extractor._extract_file.language",
+      "kind": "variable",
+      "language": "python",
+      "line": 168
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "graph",
+      "qualified_name": "Extractor._extract_file.graph",
+      "kind": "variable",
+      "language": "python",
+      "line": 169
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "uri",
+      "qualified_name": "Extractor._extract_file.uri",
+      "kind": "variable",
+      "language": "python",
+      "line": 171
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "text",
+      "qualified_name": "Extractor._extract_file.text",
+      "kind": "variable",
+      "language": "python",
+      "line": 173
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "exc",
+      "qualified_name": "Extractor._extract_file.exc",
+      "kind": "variable",
+      "language": "python",
+      "line": 174
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "raw_symbols",
+      "qualified_name": "Extractor._extract_file.raw_symbols",
+      "kind": "variable",
+      "language": "python",
+      "line": 180
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "symbols",
+      "qualified_name": "Extractor._extract_file.symbols",
+      "kind": "variable",
+      "language": "python",
+      "line": 181
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "sym",
+      "qualified_name": "Extractor._extract_file.sym",
+      "kind": "variable",
+      "language": "python",
+      "line": 184
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "_flatten_symbols",
+      "qualified_name": "Extractor._flatten_symbols",
+      "kind": "method",
+      "language": "python",
+      "line": 194
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "items",
+      "qualified_name": "Extractor._flatten_symbols.items",
+      "kind": "variable",
+      "language": "python",
+      "line": 196
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "uri",
+      "qualified_name": "Extractor._flatten_symbols.uri",
+      "kind": "variable",
+      "language": "python",
+      "line": 197
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "language",
+      "qualified_name": "Extractor._flatten_symbols.language",
+      "kind": "variable",
+      "language": "python",
+      "line": 198
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "prefix",
+      "qualified_name": "Extractor._flatten_symbols.prefix",
+      "kind": "variable",
+      "language": "python",
+      "line": 199
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "item",
+      "qualified_name": "Extractor._flatten_symbols.item",
+      "kind": "variable",
+      "language": "python",
+      "line": 201
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "name",
+      "qualified_name": "Extractor._flatten_symbols.name",
+      "kind": "variable",
+      "language": "python",
+      "line": 202
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "qn",
+      "qualified_name": "Extractor._flatten_symbols.qn",
+      "kind": "variable",
+      "language": "python",
+      "line": 203
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "pos",
+      "qualified_name": "Extractor._flatten_symbols.pos",
+      "kind": "variable",
+      "language": "python",
+      "line": 207
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "sym",
+      "qualified_name": "Extractor._flatten_symbols.sym",
+      "kind": "variable",
+      "language": "python",
+      "line": 214
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "child",
+      "qualified_name": "Extractor._flatten_symbols.child",
+      "kind": "variable",
+      "language": "python",
+      "line": 223
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "_extract_references",
+      "qualified_name": "Extractor._extract_references",
+      "kind": "method",
+      "language": "python",
+      "line": 226
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "client",
+      "qualified_name": "Extractor._extract_references.client",
+      "kind": "variable",
+      "language": "python",
+      "line": 227
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "sym",
+      "qualified_name": "Extractor._extract_references.sym",
+      "kind": "variable",
+      "language": "python",
+      "line": 227
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "graph",
+      "qualified_name": "Extractor._extract_references.graph",
+      "kind": "variable",
+      "language": "python",
+      "line": 227
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "refs",
+      "qualified_name": "Extractor._extract_references.refs",
+      "kind": "variable",
+      "language": "python",
+      "line": 232
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "ref",
+      "qualified_name": "Extractor._extract_references.ref",
+      "kind": "variable",
+      "language": "python",
+      "line": 235
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "_extract_calls",
+      "qualified_name": "Extractor._extract_calls",
+      "kind": "method",
+      "language": "python",
+      "line": 243
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "client",
+      "qualified_name": "Extractor._extract_calls.client",
+      "kind": "variable",
+      "language": "python",
+      "line": 244
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "sym",
+      "qualified_name": "Extractor._extract_calls.sym",
+      "kind": "variable",
+      "language": "python",
+      "line": 244
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "graph",
+      "qualified_name": "Extractor._extract_calls.graph",
+      "kind": "variable",
+      "language": "python",
+      "line": 244
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "items",
+      "qualified_name": "Extractor._extract_calls.items",
+      "kind": "variable",
+      "language": "python",
+      "line": 249
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "item",
+      "qualified_name": "Extractor._extract_calls.item",
+      "kind": "variable",
+      "language": "python",
+      "line": 252
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "outgoing",
+      "qualified_name": "Extractor._extract_calls.outgoing",
+      "kind": "variable",
+      "language": "python",
+      "line": 254
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "call",
+      "qualified_name": "Extractor._extract_calls.call",
+      "kind": "variable",
+      "language": "python",
+      "line": 257
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "to",
+      "qualified_name": "Extractor._extract_calls.to",
+      "kind": "variable",
+      "language": "python",
+      "line": 258
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "_clients",
+      "qualified_name": "Extractor._clients",
+      "kind": "variable",
+      "language": "python",
+      "line": 125
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "_root",
+      "qualified_name": "Extractor._root",
+      "kind": "variable",
+      "language": "python",
+      "line": 126
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "resolve_edges",
+      "qualified_name": "resolve_edges",
+      "kind": "function",
+      "language": "python",
+      "line": 267
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "sg",
+      "qualified_name": "resolve_edges.sg",
+      "kind": "variable",
+      "language": "python",
+      "line": 267
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "by_file",
+      "qualified_name": "resolve_edges.by_file",
+      "kind": "variable",
+      "language": "python",
+      "line": 269
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "s",
+      "qualified_name": "resolve_edges.s",
+      "kind": "variable",
+      "language": "python",
+      "line": 270
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "v",
+      "qualified_name": "resolve_edges.v",
+      "kind": "variable",
+      "language": "python",
+      "line": 274
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "resolved",
+      "qualified_name": "resolve_edges.resolved",
+      "kind": "variable",
+      "language": "python",
+      "line": 277
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "edge",
+      "qualified_name": "resolve_edges.edge",
+      "kind": "variable",
+      "language": "python",
+      "line": 278
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "candidates",
+      "qualified_name": "resolve_edges.candidates",
+      "kind": "variable",
+      "language": "python",
+      "line": 279
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "best",
+      "qualified_name": "resolve_edges.best",
+      "kind": "variable",
+      "language": "python",
+      "line": 282
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "line",
+      "qualified_name": "resolve_edges.line",
+      "kind": "variable",
+      "language": "python",
+      "line": 283
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "name": "sym",
+      "qualified_name": "resolve_edges.sym",
+      "kind": "variable",
+      "language": "python",
+      "line": 283
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "log",
+      "qualified_name": "log",
+      "kind": "variable",
+      "language": "python",
+      "line": 29
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "LSP_SERVERS",
+      "qualified_name": "LSP_SERVERS",
+      "kind": "constant",
+      "language": "python",
+      "line": 32
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "_find_servers",
+      "qualified_name": "_find_servers",
+      "kind": "function",
+      "language": "python",
+      "line": 38
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "available",
+      "qualified_name": "_find_servers.available",
+      "kind": "variable",
+      "language": "python",
+      "line": 40
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "lang",
+      "qualified_name": "_find_servers.lang",
+      "kind": "variable",
+      "language": "python",
+      "line": 41
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "binary",
+      "qualified_name": "_find_servers.binary",
+      "kind": "variable",
+      "language": "python",
+      "line": 41
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "args",
+      "qualified_name": "_find_servers.args",
+      "kind": "variable",
+      "language": "python",
+      "line": 41
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "_start_clients",
+      "qualified_name": "_start_clients",
+      "kind": "function",
+      "language": "python",
+      "line": 49
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "servers",
+      "qualified_name": "_start_clients.servers",
+      "kind": "variable",
+      "language": "python",
+      "line": 50
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "root",
+      "qualified_name": "_start_clients.root",
+      "kind": "variable",
+      "language": "python",
+      "line": 50
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "clients",
+      "qualified_name": "_start_clients.clients",
+      "kind": "variable",
+      "language": "python",
+      "line": 52
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "lang",
+      "qualified_name": "_start_clients.lang",
+      "kind": "variable",
+      "language": "python",
+      "line": 53
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "binary",
+      "qualified_name": "_start_clients.binary",
+      "kind": "variable",
+      "language": "python",
+      "line": 53
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "args",
+      "qualified_name": "_start_clients.args",
+      "kind": "variable",
+      "language": "python",
+      "line": 53
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "_stop_clients",
+      "qualified_name": "_stop_clients",
+      "kind": "function",
+      "language": "python",
+      "line": 61
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "clients",
+      "qualified_name": "_stop_clients.clients",
+      "kind": "variable",
+      "language": "python",
+      "line": 61
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "lang",
+      "qualified_name": "_stop_clients.lang",
+      "kind": "variable",
+      "language": "python",
+      "line": 62
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "client",
+      "qualified_name": "_stop_clients.client",
+      "kind": "variable",
+      "language": "python",
+      "line": 62
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "_load_graph",
+      "qualified_name": "_load_graph",
+      "kind": "function",
+      "language": "python",
+      "line": 67
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "path",
+      "qualified_name": "_load_graph.path",
+      "kind": "variable",
+      "language": "python",
+      "line": 67
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "data",
+      "qualified_name": "_load_graph.data",
+      "kind": "variable",
+      "language": "python",
+      "line": 68
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "_save_graph",
+      "qualified_name": "_save_graph",
+      "kind": "function",
+      "language": "python",
+      "line": 72
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "sg",
+      "qualified_name": "_save_graph.sg",
+      "kind": "variable",
+      "language": "python",
+      "line": 72
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "path",
+      "qualified_name": "_save_graph.path",
+      "kind": "variable",
+      "language": "python",
+      "line": 72
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "_merge_incremental",
+      "qualified_name": "_merge_incremental",
+      "kind": "function",
+      "language": "python",
+      "line": 77
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "base",
+      "qualified_name": "_merge_incremental.base",
+      "kind": "variable",
+      "language": "python",
+      "line": 78
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "delta",
+      "qualified_name": "_merge_incremental.delta",
+      "kind": "variable",
+      "language": "python",
+      "line": 78
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "changed_uris",
+      "qualified_name": "_merge_incremental.changed_uris",
+      "kind": "variable",
+      "language": "python",
+      "line": 78
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "kept_symbols",
+      "qualified_name": "_merge_incremental.kept_symbols",
+      "kind": "variable",
+      "language": "python",
+      "line": 82
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "kept_edges",
+      "qualified_name": "_merge_incremental.kept_edges",
+      "kind": "variable",
+      "language": "python",
+      "line": 83
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "main",
+      "qualified_name": "main",
+      "kind": "function",
+      "language": "python",
+      "line": 93
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "parser",
+      "qualified_name": "main.parser",
+      "kind": "variable",
+      "language": "python",
+      "line": 94
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "args",
+      "qualified_name": "main.args",
+      "kind": "variable",
+      "language": "python",
+      "line": 123
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "root",
+      "qualified_name": "main.root",
+      "kind": "variable",
+      "language": "python",
+      "line": 131
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "servers",
+      "qualified_name": "main.servers",
+      "kind": "variable",
+      "language": "python",
+      "line": 136
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "clients",
+      "qualified_name": "main.clients",
+      "kind": "variable",
+      "language": "python",
+      "line": 141
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "extractor",
+      "qualified_name": "main.extractor",
+      "kind": "variable",
+      "language": "python",
+      "line": 143
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "base",
+      "qualified_name": "main.base",
+      "kind": "variable",
+      "language": "python",
+      "line": 150
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "changed",
+      "qualified_name": "main.changed",
+      "kind": "variable",
+      "language": "python",
+      "line": 151
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "delta",
+      "qualified_name": "main.delta",
+      "kind": "variable",
+      "language": "python",
+      "line": 152
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "changed_uris",
+      "qualified_name": "main.changed_uris",
+      "kind": "variable",
+      "language": "python",
+      "line": 153
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "sg",
+      "qualified_name": "main.sg",
+      "kind": "variable",
+      "language": "python",
+      "line": 154
+    },
+    {
+      "uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "name": "result",
+      "qualified_name": "main.result",
+      "kind": "variable",
+      "language": "python",
+      "line": 165
+    }
+  ],
+  "edges": [
+    {
+      "source_qualified": "CouplingPair",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 45,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "CouplingPair",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 262,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Community",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 43,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Community",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 253,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "AnalysisResult",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 201,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "AnalysisResult",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 206,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "AnalysisResult",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 271,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "AnalysisResult",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 283,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "AnalysisResult.to_dict",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 284,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "AnalysisResult.print_summary",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 166,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "_relative",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 93,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "_relative",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 101,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "_relative",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 102,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "build_file_graph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 203,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "build_symbol_graph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 222,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "analyze",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 26,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "analyze",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 165,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "save_report",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 26,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "save_report",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 169,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "analyze_symbols",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 269,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "ServerCapabilities",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 40,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "ServerCapabilities",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 146,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 15,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 124,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 166,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 227,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 244,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 27,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 51,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 55,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 61,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.request",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 86,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.request",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 92,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.request",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 102,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.request",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 111,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.request",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 116,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.request",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 127,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.notify",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 73,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.notify",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 83,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.notify",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 117,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.notify",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 159,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.open_document",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 178,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.close_document",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 192,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.document_symbols",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 180,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.references",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 232,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.prepare_call_hierarchy",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 249,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.outgoing_calls",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 254,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient.shutdown",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 64,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient._initialize",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 50,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient._send",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 60,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient._send",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 70,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient._send",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 212,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient._read_loop",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 48,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "LSPClient._dispatch",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "target_line": 200,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 57,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 65,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 94,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 200,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 214,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 227,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 244,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 267,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 267,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 269,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol.kind_name",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 176,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol.kind_name",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 306,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Symbol.kind_name",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 74,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Edge",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 66,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Edge",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 107,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Edge",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 236,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Edge",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 259,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 20,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 131,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 164,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 198,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 289,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 92,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 128,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 129,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 169,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 227,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 244,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 267,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 25,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 67,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 69,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 72,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 78,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 78,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 79,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 87,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph.to_dict",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 73,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "SymbolGraph.from_dict",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 69,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Extractor",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 25,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Extractor",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 143,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Extractor.extract",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 152,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Extractor.extract",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 157,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Extractor._discover",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 137,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Extractor._extract_file",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 143,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Extractor._flatten_symbols",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 181,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Extractor._flatten_symbols",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 224,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Extractor._extract_references",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 187,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "Extractor._extract_calls",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_line": 188,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "resolve_edges",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 20,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "resolve_edges",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 166,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "resolve_edges",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "target_line": 296,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "_find_servers",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 136,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "_start_clients",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 141,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "_stop_clients",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 163,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "_load_graph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 150,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "_save_graph",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 160,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "_merge_incremental",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 154,
+      "type": "reference"
+    },
+    {
+      "source_qualified": "main",
+      "source_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_uri": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target_line": 173,
+      "type": "reference"
+    }
+  ]
+}

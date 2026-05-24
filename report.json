@@ -1,0 +1,1071 @@
+{
+  "summary": {
+    "files": 5,
+    "edges": 5,
+    "symbols": 352,
+    "communities": 2,
+    "modularity": 0.0
+  },
+  "communities": [
+    {
+      "id": 0,
+      "size": 4,
+      "internal_edges": 5,
+      "languages": [
+        "python"
+      ],
+      "files": [
+        "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+        "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+        "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+        "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py"
+      ]
+    },
+    {
+      "id": 1,
+      "size": 1,
+      "internal_edges": 0,
+      "languages": [
+        "python"
+      ],
+      "files": [
+        "file:///Users/muratcanozdemir/codegraph-lsp/scripts/visualise.py"
+      ]
+    }
+  ],
+  "top_coupling": [
+    {
+      "source": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "weight": 14
+    },
+    {
+      "source": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "weight": 11
+    },
+    {
+      "source": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/extract.py",
+      "target": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "weight": 10
+    },
+    {
+      "source": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/graph.py",
+      "weight": 5
+    },
+    {
+      "source": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/__main__.py",
+      "target": "file:///Users/muratcanozdemir/codegraph-lsp/src/codegraph/lsp.py",
+      "weight": 5
+    }
+  ],
+  "symbol_graph": [
+    {
+      "source": "CouplingPair",
+      "target": "AnalysisResult",
+      "source_kind": "class",
+      "target_kind": "class",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "CouplingPair",
+      "target": "analyze",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Community",
+      "target": "AnalysisResult",
+      "source_kind": "class",
+      "target_kind": "class",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Community",
+      "target": "analyze",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "AnalysisResult",
+      "target": "analyze",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 3,
+      "type": "reference"
+    },
+    {
+      "source": "AnalysisResult",
+      "target": "save_report",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "AnalysisResult.to_dict",
+      "target": "save_report",
+      "source_kind": "method",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "AnalysisResult.print_summary",
+      "target": "main",
+      "source_kind": "method",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "_relative",
+      "target": "AnalysisResult.print_summary",
+      "source_kind": "function",
+      "target_kind": "method",
+      "weight": 3,
+      "type": "reference"
+    },
+    {
+      "source": "build_file_graph",
+      "target": "analyze",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "build_symbol_graph",
+      "target": "analyze",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "analyze",
+      "target": "main",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "save_report",
+      "target": "main",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "analyze_symbols",
+      "target": "analyze",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "ServerCapabilities",
+      "target": "LSPClient.__init__",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "ServerCapabilities",
+      "target": "LSPClient._initialize",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient",
+      "target": "Extractor.__init__",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient",
+      "target": "Extractor._extract_file",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient",
+      "target": "Extractor._extract_references",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient",
+      "target": "Extractor._extract_calls",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient",
+      "target": "_start_clients",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 2,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient",
+      "target": "_stop_clients",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.request",
+      "target": "LSPClient.document_symbols",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.request",
+      "target": "LSPClient.references",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.request",
+      "target": "LSPClient.prepare_call_hierarchy",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.request",
+      "target": "LSPClient.outgoing_calls",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.request",
+      "target": "LSPClient.shutdown",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.request",
+      "target": "LSPClient._initialize",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.notify",
+      "target": "LSPClient.open_document",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.notify",
+      "target": "LSPClient.close_document",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.notify",
+      "target": "LSPClient.shutdown",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.notify",
+      "target": "LSPClient._initialize",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.open_document",
+      "target": "Extractor._extract_file",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.close_document",
+      "target": "Extractor._extract_file",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.document_symbols",
+      "target": "Extractor._extract_file",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.references",
+      "target": "Extractor._extract_references",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.prepare_call_hierarchy",
+      "target": "Extractor._extract_calls",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.outgoing_calls",
+      "target": "Extractor._extract_calls",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient.shutdown",
+      "target": "_stop_clients",
+      "source_kind": "method",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient._initialize",
+      "target": "LSPClient.__init__",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient._send",
+      "target": "LSPClient.request",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient._send",
+      "target": "LSPClient.notify",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient._send",
+      "target": "LSPClient._dispatch",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient._read_loop",
+      "target": "LSPClient.__init__",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "LSPClient._dispatch",
+      "target": "LSPClient._read_loop",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Symbol",
+      "target": "Edge",
+      "source_kind": "class",
+      "target_kind": "class",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Symbol",
+      "target": "SymbolGraph",
+      "source_kind": "class",
+      "target_kind": "class",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Symbol",
+      "target": "SymbolGraph.from_dict",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Symbol",
+      "target": "Extractor._flatten_symbols",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 2,
+      "type": "reference"
+    },
+    {
+      "source": "Symbol",
+      "target": "Extractor._extract_references",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Symbol",
+      "target": "Extractor._extract_calls",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Symbol",
+      "target": "resolve_edges",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 3,
+      "type": "reference"
+    },
+    {
+      "source": "Symbol.kind_name",
+      "target": "build_symbol_graph",
+      "source_kind": "method",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Symbol.kind_name",
+      "target": "analyze_symbols",
+      "source_kind": "method",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Symbol.kind_name",
+      "target": "SymbolGraph.to_dict",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Edge",
+      "target": "SymbolGraph",
+      "source_kind": "class",
+      "target_kind": "class",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Edge",
+      "target": "SymbolGraph.from_dict",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Edge",
+      "target": "Extractor._extract_references",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Edge",
+      "target": "Extractor._extract_calls",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "build_file_graph",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "build_symbol_graph",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "analyze",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "analyze_symbols",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "SymbolGraph.from_dict",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "Extractor.extract",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 2,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "Extractor._extract_file",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "Extractor._extract_references",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "Extractor._extract_calls",
+      "source_kind": "class",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "resolve_edges",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "_load_graph",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 2,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "_save_graph",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph",
+      "target": "_merge_incremental",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 4,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph.to_dict",
+      "target": "_save_graph",
+      "source_kind": "method",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "SymbolGraph.from_dict",
+      "target": "_load_graph",
+      "source_kind": "method",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Extractor",
+      "target": "main",
+      "source_kind": "class",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Extractor.extract",
+      "target": "main",
+      "source_kind": "method",
+      "target_kind": "function",
+      "weight": 2,
+      "type": "reference"
+    },
+    {
+      "source": "Extractor._discover",
+      "target": "Extractor.extract",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Extractor._extract_file",
+      "target": "Extractor.extract",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Extractor._flatten_symbols",
+      "target": "Extractor._extract_file",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Extractor._extract_references",
+      "target": "Extractor._extract_file",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "Extractor._extract_calls",
+      "target": "Extractor._extract_file",
+      "source_kind": "method",
+      "target_kind": "method",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "resolve_edges",
+      "target": "build_symbol_graph",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "resolve_edges",
+      "target": "analyze_symbols",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "_find_servers",
+      "target": "main",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "_start_clients",
+      "target": "main",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "_stop_clients",
+      "target": "main",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "_load_graph",
+      "target": "main",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "_save_graph",
+      "target": "main",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    },
+    {
+      "source": "_merge_incremental",
+      "target": "main",
+      "source_kind": "function",
+      "target_kind": "function",
+      "weight": 1,
+      "type": "reference"
+    }
+  ],
+  "symbol_communities": [
+    {
+      "id": 0,
+      "size": 17,
+      "cohesion": 24.0,
+      "symbols": [
+        {
+          "name": "Extractor._extract_calls",
+          "kind": "method",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "Extractor._extract_file",
+          "kind": "method",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "LSPClient.__init__",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient._dispatch",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient._initialize",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient._read_loop",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient._send",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient.close_document",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient.document_symbols",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient.notify",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient.open_document",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient.outgoing_calls",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient.prepare_call_hierarchy",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient.references",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient.request",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "LSPClient.shutdown",
+          "kind": "method",
+          "file": "src/codegraph/lsp.py"
+        },
+        {
+          "name": "ServerCapabilities",
+          "kind": "class",
+          "file": "src/codegraph/lsp.py"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "size": 9,
+      "cohesion": 22.0,
+      "symbols": [
+        {
+          "name": "_load_graph",
+          "kind": "function",
+          "file": "src/codegraph/__main__.py"
+        },
+        {
+          "name": "_merge_incremental",
+          "kind": "function",
+          "file": "src/codegraph/__main__.py"
+        },
+        {
+          "name": "Edge",
+          "kind": "class",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "Extractor._extract_references",
+          "kind": "method",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "Extractor._flatten_symbols",
+          "kind": "method",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "Symbol",
+          "kind": "class",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "SymbolGraph",
+          "kind": "class",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "SymbolGraph.from_dict",
+          "kind": "method",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "resolve_edges",
+          "kind": "function",
+          "file": "src/codegraph/extract.py"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "size": 11,
+      "cohesion": 15.0,
+      "symbols": [
+        {
+          "name": "Symbol.kind_name",
+          "kind": "method",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "SymbolGraph.to_dict",
+          "kind": "method",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "AnalysisResult",
+          "kind": "class",
+          "file": "src/codegraph/graph.py"
+        },
+        {
+          "name": "AnalysisResult.to_dict",
+          "kind": "method",
+          "file": "src/codegraph/graph.py"
+        },
+        {
+          "name": "Community",
+          "kind": "class",
+          "file": "src/codegraph/graph.py"
+        },
+        {
+          "name": "CouplingPair",
+          "kind": "class",
+          "file": "src/codegraph/graph.py"
+        },
+        {
+          "name": "analyze",
+          "kind": "function",
+          "file": "src/codegraph/graph.py"
+        },
+        {
+          "name": "analyze_symbols",
+          "kind": "function",
+          "file": "src/codegraph/graph.py"
+        },
+        {
+          "name": "build_file_graph",
+          "kind": "function",
+          "file": "src/codegraph/graph.py"
+        },
+        {
+          "name": "build_symbol_graph",
+          "kind": "function",
+          "file": "src/codegraph/graph.py"
+        },
+        {
+          "name": "save_report",
+          "kind": "function",
+          "file": "src/codegraph/graph.py"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "size": 10,
+      "cohesion": 12.0,
+      "symbols": [
+        {
+          "name": "_find_servers",
+          "kind": "function",
+          "file": "src/codegraph/__main__.py"
+        },
+        {
+          "name": "_save_graph",
+          "kind": "function",
+          "file": "src/codegraph/__main__.py"
+        },
+        {
+          "name": "_start_clients",
+          "kind": "function",
+          "file": "src/codegraph/__main__.py"
+        },
+        {
+          "name": "_stop_clients",
+          "kind": "function",
+          "file": "src/codegraph/__main__.py"
+        },
+        {
+          "name": "main",
+          "kind": "function",
+          "file": "src/codegraph/__main__.py"
+        },
+        {
+          "name": "Extractor",
+          "kind": "class",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "Extractor.__init__",
+          "kind": "method",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "Extractor._discover",
+          "kind": "method",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "Extractor.extract",
+          "kind": "method",
+          "file": "src/codegraph/extract.py"
+        },
+        {
+          "name": "LSPClient",
+          "kind": "class",
+          "file": "src/codegraph/lsp.py"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "size": 2,
+      "cohesion": 3.0,
+      "symbols": [
+        {
+          "name": "AnalysisResult.print_summary",
+          "kind": "method",
+          "file": "src/codegraph/graph.py"
+        },
+        {
+          "name": "_relative",
+          "kind": "function",
+          "file": "src/codegraph/graph.py"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "size": 1,
+      "cohesion": 0,
+      "symbols": [
+        {
+          "name": "Symbol.file_path",
+          "kind": "method",
+          "file": "src/codegraph/extract.py"
+        }
+      ]
+    }
+  ]
+}
