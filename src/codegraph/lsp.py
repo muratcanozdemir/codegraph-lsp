@@ -11,7 +11,7 @@ import logging
 import os
 import subprocess
 import threading
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -53,16 +53,18 @@ class LSPClient:
     # -- public API ----------------------------------------------------------
 
     def request(self, method: str, params: dict | None = None, timeout: float = 60) -> Any:
+        event = threading.Event()
         with self._lock:
             self._id += 1
             rid = self._id
-        event = threading.Event()
-        self._pending[rid] = {"event": event, "result": None, "error": None}
+            self._pending[rid] = {"event": event, "result": None, "error": None}
         self._send({"jsonrpc": "2.0", "id": rid, "method": method, "params": params or {}})
         if not event.wait(timeout=timeout):
-            self._pending.pop(rid, None)
+            with self._lock:
+                self._pending.pop(rid, None)
             raise TimeoutError(f"{method} timed out after {timeout}s")
-        entry = self._pending.pop(rid)
+        with self._lock:
+            entry = self._pending.pop(rid)
         if entry["error"]:
             raise RuntimeError(f"LSP error on {method}: {entry['error']}")
         return entry["result"]
@@ -120,7 +122,11 @@ class LSPClient:
             pass
         finally:
             self._proc.terminate()
-            self._proc.wait(timeout=5)
+            try:
+                self._proc.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                self._proc.kill()
+                self._proc.wait(timeout=5)
 
     # -- protocol internals --------------------------------------------------
 
@@ -202,12 +208,14 @@ class LSPClient:
 
     def _dispatch(self, msg: dict) -> None:
         # response to our request
-        if "id" in msg and msg["id"] in self._pending:
-            entry = self._pending[msg["id"]]
-            entry["result"] = msg.get("result")
-            entry["error"] = msg.get("error")
-            entry["event"].set()
-            return
+        if "id" in msg:
+            with self._lock:
+                entry = self._pending.get(msg["id"])
+            if entry is not None:
+                entry["result"] = msg.get("result")
+                entry["error"] = msg.get("error")
+                entry["event"].set()
+                return
         # server-initiated request — respond with null
         if "id" in msg and "method" in msg:
             self._send({"jsonrpc": "2.0", "id": msg["id"], "result": None})

@@ -9,9 +9,9 @@ from __future__ import annotations
 
 import logging
 import sys
+from collections.abc import Iterator
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Iterator
 
 from codegraph.lsp import LSPClient
 
@@ -72,8 +72,9 @@ class SymbolGraph:
                 {
                     "uri": s.uri, "name": s.name,
                     "qualified_name": s.qualified_name,
-                    "kind": s.kind_name, "language": s.language,
-                    "line": s.line,
+                    "kind": s.kind, "kind_name": s.kind_name,
+                    "language": s.language,
+                    "line": s.line, "character": s.character,
                 }
                 for s in self.symbols
             ],
@@ -95,7 +96,8 @@ class SymbolGraph:
             Symbol(
                 uri=s["uri"], name=s["name"],
                 qualified_name=s["qualified_name"],
-                kind=0, line=s["line"], character=0,
+                kind=s.get("kind", 0), line=s["line"],
+                character=s.get("character", 0),
                 language=language,
             )
             for s in data.get("symbols", [])
@@ -155,9 +157,7 @@ class Extractor:
                 parts = p.relative_to(self._root).parts
                 if any(d in parts for d in ("vendor", "node_modules", ".git", "__pycache__", ".venv", "venv")):
                     continue
-                # skip test fixtures and generated protobuf
-                if p.name.endswith("_test.go") and language == "go":
-                    pass  # keep tests — they reveal coupling
+                # skip generated protobuf (Go test files are kept — they reveal coupling)
                 if p.name.endswith(".pb.go"):
                     continue
                 yield p
@@ -269,7 +269,7 @@ def resolve_edges(sg: SymbolGraph) -> list[tuple[Symbol, Symbol, str]]:
     """Map (uri, line) edge targets back to the nearest enclosing symbol."""
     by_file: dict[str, list[tuple[int, Symbol]]] = {}
     for s in sg.symbols:
-        if s.kind not in INTERESTING_KINDS:  # <-- add this filter
+        if s.kind not in INTERESTING_KINDS:
             continue
         by_file.setdefault(s.uri, []).append((s.line, s))
     for v in by_file.values():

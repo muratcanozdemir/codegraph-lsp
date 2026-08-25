@@ -78,13 +78,17 @@ def _save_graph(sg: SymbolGraph, path: Path) -> None:
 def _merge_incremental(
     base: SymbolGraph, delta: SymbolGraph, changed_uris: set[str],
 ) -> SymbolGraph:
-    """Replace symbols/edges for changed files, keep the rest."""
+    """Replace symbols/edges for changed files, keep the rest.
+
+    Only edges *sourced* from a changed file are stale (delta re-extracts
+    those). Edges from an unchanged file that reference a changed file are
+    kept — delta extraction never re-visits unchanged files, so dropping
+    them would silently lose real incoming coupling instead of just
+    tolerating possibly-shifted target line numbers.
+    """
     # keep symbols from files NOT in the changed set
     kept_symbols = [s for s in base.symbols if s.uri not in changed_uris]
-    kept_edges = [
-        e for e in base.edges
-        if e.source.uri not in changed_uris and e.target_uri not in changed_uris
-    ]
+    kept_edges = [e for e in base.edges if e.source.uri not in changed_uris]
     return SymbolGraph(
         symbols=kept_symbols + delta.symbols,
         edges=kept_edges + delta.edges,

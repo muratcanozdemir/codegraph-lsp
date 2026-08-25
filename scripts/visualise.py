@@ -1,6 +1,8 @@
-import json, sys, os
+import json
+import sys
 
-d = json.load(open(sys.argv[1]))
+with open(sys.argv[1]) as f:
+    d = json.load(f)
 edges = d.get("symbol_graph", [])
 communities = d.get("symbol_communities", [])
 
@@ -32,9 +34,11 @@ for name in connected:
     kind = None
     for e in edges:
         if e["source"] == name:
-            kind = e["source_kind"]; break
+            kind = e["source_kind"]
+            break
         if e["target"] == name:
-            kind = e["target_kind"]; break
+            kind = e["target_kind"]
+            break
     shape = shapes.get(kind or "", "ellipse")
     fill = sym_color.get(name, "#f0f0f0")
     print(f'"{name}"[label="{short}",shape={shape},fillcolor="{fill}"];')
