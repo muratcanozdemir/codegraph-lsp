@@ -9,6 +9,7 @@ Two graph views:
 
 from __future__ import annotations
 
+import contextlib
 import json
 import logging
 from collections import Counter
@@ -18,8 +19,7 @@ from pathlib import Path
 import igraph as ig
 import leidenalg
 
-from codegraph.extract import SymbolGraph, resolve_edges, INTERESTING_KINDS
-
+from codegraph.extract import INTERESTING_KINDS, SymbolGraph, resolve_edges
 
 log = logging.getLogger(__name__)
 
@@ -97,7 +97,7 @@ class AnalysisResult:
                 print(f"    ... and {len(c.files) - 15} more")
 
         if self.top_coupling:
-            print(f"\n  Top coupling pairs:")
+            print("\n  Top coupling pairs:")
             for cp in self.top_coupling[:10]:
                 s = _relative(cp.source, root) if root else cp.source
                 t = _relative(cp.target, root) if root else cp.target
@@ -340,10 +340,8 @@ def analyze_symbols(
             if uri.startswith("file://"):
                 uri = uri[7:]
             if root:
-                try:
+                with contextlib.suppress(ValueError):
                     uri = str(Path(uri).relative_to(root.resolve()))
-                except ValueError:
-                    pass
             syms.append({
                 "name": name,
                 "kind": g.vs[m]["kind"],
