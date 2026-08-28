@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: codegraph-lsp
+  description: CLI that drives LSP servers (pyright, gopls) to extract call/reference graphs, builds a file-level coupling graph, and runs Leiden community detection to surface coupled modules.
+  tags: [python, cli, lsp, graph-analysis]
+  annotations:
+    github.com/project-slug: muratcanozdemir/codegraph-lsp
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: tool
+  owner: user:default/muratcanozdemir
+  lifecycle: experimental
