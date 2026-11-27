@@ -62,6 +62,7 @@ def test_main_exits_when_root_is_not_a_directory(tmp_path, monkeypatch, capsys):
 
 
 def test_main_exits_when_no_lsp_servers_available(tmp_path, monkeypatch, capsys):
+    (tmp_path / "a.py").write_text("x = 1\n")
     monkeypatch.setattr(sys, "argv", ["codegraph", str(tmp_path)])
     monkeypatch.setattr(cli.shutil, "which", lambda _binary: None)
 
@@ -69,7 +70,55 @@ def test_main_exits_when_no_lsp_servers_available(tmp_path, monkeypatch, capsys)
         cli.main()
 
     assert exc.value.code == 1
-    assert "no LSP servers found" in capsys.readouterr().err
+    # names only the server the repo's languages need
+    assert "no LSP servers found (need pyright-langserver)" in capsys.readouterr().err
+
+
+def test_main_exits_when_there_is_no_source(tmp_path, monkeypatch, capsys):
+    (tmp_path / "README.md").write_text("hi\n")
+    monkeypatch.setattr(sys, "argv", ["codegraph", str(tmp_path)])
+
+    with pytest.raises(SystemExit) as exc:
+        cli.main()
+
+    assert exc.value.code == 1
+    assert "no source files (.py, .go)" in capsys.readouterr().err
+
+
+class _Started(Exception):
+    pass
+
+
+def test_main_starts_only_servers_for_languages_present(tmp_path, monkeypatch):
+    (tmp_path / "a.py").write_text("x = 1\n")
+    (tmp_path / "vendor").mkdir()
+    (tmp_path / "vendor" / "skipped.go").write_text("package v\n")
+    monkeypatch.setattr(sys, "argv", ["codegraph", str(tmp_path)])
+    monkeypatch.setattr(cli.shutil, "which", lambda binary: f"/usr/bin/{binary}")
+    started = {}
+
+    def fake_start(servers, root):
+        started.update(servers)
+        raise _Started
+
+    monkeypatch.setattr(cli, "_start_clients", fake_start)
+
+    with pytest.raises(_Started):
+        cli.main()
+
+    assert list(started) == ["python"]
+
+
+def test_main_diff_needs_load_graph_before_starting_servers(tmp_path, monkeypatch, capsys):
+    (tmp_path / "a.py").write_text("x = 1\n")
+    monkeypatch.setattr(sys, "argv", ["codegraph", str(tmp_path), "--diff", "a.py"])
+    monkeypatch.setattr(cli, "_start_clients", lambda *_: pytest.fail("servers started"))
+
+    with pytest.raises(SystemExit) as exc:
+        cli.main()
+
+    assert exc.value.code == 1
+    assert "--diff requires --load-graph" in capsys.readouterr().err
 
 
 def test_find_servers_filters_to_available_binaries(monkeypatch):
@@ -78,6 +127,14 @@ def test_find_servers_filters_to_available_binaries(monkeypatch):
     servers = cli._find_servers()
 
     assert list(servers) == ["python"]
+
+
+def test_find_servers_only_looks_for_the_languages_asked(monkeypatch):
+    looked = []
+    monkeypatch.setattr(cli.shutil, "which", lambda binary: looked.append(binary) or binary)
+
+    assert list(cli._find_servers(["go"])) == ["go"]
+    assert looked == ["gopls"]
 
 
 def test_version_flag_prints_version(monkeypatch, capsys):

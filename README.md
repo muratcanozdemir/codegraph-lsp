@@ -24,9 +24,14 @@ uv run codegraph /path/to/repo --resolution 2.0  # more granular communities
 uv run codegraph /path/to/repo --jobs 16         # more concurrent LSP lookups per file (default 8)
 uv run codegraph /path/to/repo --include-tests   # also index test code (skipped by default)
 uv run codegraph /path/to/repo --exclude 'examples/*' --exclude fakes  # skip more paths
+uv run codegraph /path/to/repo --min-community-size 1  # keep Leiden's tiny symbol communities (default folds < 3)
 ```
 
 `--diff` paths are resolved against the repo root, not the current directory.
+
+Only the LSP servers for languages that have files to index are started, so a Python-only repo never launches gopls, and only those servers need to be installed.
+
+Symbol communities smaller than `--min-community-size` (default 3) are folded into the community they have the heaviest links to, or, with no links at all (a constructor only ever reached through its class), into the one holding most symbols of their files. Leiden otherwise leaves such symbols as one- or two-symbol communities that say nothing about coupling.
 
 In the report's `symbol_graph`, edges point from dependent to dependency (caller -> callee, use site -> definition). Symbols are identified by `source_id`/`target_id` (`<file>::<qualified name>`), since qualified names alone repeat across files.
 

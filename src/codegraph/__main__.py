@@ -21,6 +21,7 @@ import json
 import logging
 import shutil
 import sys
+from collections.abc import Iterable
 from pathlib import Path
 
 from codegraph import __version__
@@ -37,10 +38,13 @@ LSP_SERVERS: dict[str, tuple[str, list[str]]] = {
 }
 
 
-def _find_servers() -> dict[str, tuple[str, list[str]]]:
-    """Return only servers whose binary is on PATH."""
+def _find_servers(languages: Iterable[str] | None = None) -> dict[str, tuple[str, list[str]]]:
+    """Servers whose binary is on PATH, for these languages (default: all known)."""
+    wanted = set(LSP_SERVERS if languages is None else languages)
     available = {}
     for lang, (binary, args) in LSP_SERVERS.items():
+        if lang not in wanted:
+            continue
         if shutil.which(binary):
             available[lang] = (binary, args)
         else:
@@ -132,6 +136,11 @@ def main() -> None:
         help="Leiden resolution parameter (higher = more communities)",
     )
     parser.add_argument(
+        "--min-community-size", type=_positive_int, default=3, metavar="N",
+        help="Fold symbol communities smaller than N into the community they are most "
+             "linked to, or that shares their files (default: 3; 1 = keep all)",
+    )
+    parser.add_argument(
         "-j", "--jobs", type=_positive_int, default=8,
         help="Concurrent LSP lookups per file (default: 8; 1 = sequential)",
     )
@@ -162,31 +171,40 @@ def main() -> None:
         print(f"Error: {root} is not a directory", file=sys.stderr)
         sys.exit(1)
 
-    servers = _find_servers()
-    if not servers:
-        print("Error: no LSP servers found (need pyright-langserver and/or gopls)", file=sys.stderr)
+    if args.diff and (not args.load_graph or not args.load_graph.exists()):
+        print("Error: --diff requires --load-graph with existing graph", file=sys.stderr)
         sys.exit(1)
+    changed = [root / f for f in args.diff] if args.diff else None
 
-    clients = _start_clients(servers, root)
-    try:
-        extractor = Extractor(
+    def extractor(clients: dict[str, LSPClient]) -> Extractor:
+        return Extractor(
             clients, root, jobs=args.jobs,
             include_tests=args.include_tests, exclude=args.exclude,
         )
 
-        if args.diff:
+    # find the files first, so only the servers for languages present get started
+    plan = extractor({}).plan(changed)
+    if not plan and changed is None:
+        exts = ", ".join(e for es in Extractor.EXTENSIONS.values() for e in es)
+        print(f"Error: no source files ({exts}) under {root}", file=sys.stderr)
+        sys.exit(1)
+    servers = _find_servers(plan)
+    if plan and not servers:
+        need = ", ".join(LSP_SERVERS[lang][0] for lang in plan if lang in LSP_SERVERS)
+        print(f"Error: no LSP servers found (need {need})", file=sys.stderr)
+        sys.exit(1)
+
+    clients = _start_clients(servers, root)
+    try:
+        if changed is not None:
             # incremental mode
-            if not args.load_graph or not args.load_graph.exists():
-                print("Error: --diff requires --load-graph with existing graph", file=sys.stderr)
-                sys.exit(1)
             base = _load_graph(args.load_graph)
-            changed = [root / f for f in args.diff]
-            delta = extractor.extract(files=changed)
+            delta = extractor(clients).extract(plan=plan)
             changed_uris = {f.resolve().as_uri() for f in changed}
             sg = _merge_incremental(base, delta, changed_uris)
             log.info("Incremental merge: %d changed files", len(changed))
         else:
-            sg = extractor.extract()
+            sg = extractor(clients).extract(plan=plan)
 
         if args.save_graph:
             _save_graph(sg, args.save_graph)
@@ -194,7 +212,9 @@ def main() -> None:
     finally:
         _stop_clients(clients)
 
-    result = analyze(sg, root=root, resolution=args.resolution)
+    result = analyze(
+        sg, root=root, resolution=args.resolution, min_community_size=args.min_community_size,
+    )
     result.print_summary(root=root)
 
     if args.output:

@@ -208,19 +208,31 @@ class Extractor:
             for pat in self._exclude
         )
 
-    def extract(self, files: list[Path] | None = None) -> SymbolGraph:
+    def plan(self, files: list[Path] | None = None) -> dict[str, list[Path]]:
+        """Files to extract per known language: discovered under root, or the
+        given ones. Needs no clients, so it can decide which servers to start.
+        Languages without files are left out."""
+        out: dict[str, list[Path]] = {}
+        for lang, exts in self.EXTENSIONS.items():
+            if files is not None:
+                found = [f for f in files if f.suffix in exts and not self._excluded(f)]
+            else:
+                found = list(self._discover(lang))
+            if found:
+                out[lang] = found
+        return out
+
+    def extract(
+        self, files: list[Path] | None = None, plan: dict[str, list[Path]] | None = None,
+    ) -> SymbolGraph:
+        """Extract the files of ``plan`` (default: ``self.plan(files)``) for every
+        language that has a client."""
+        if plan is None:
+            plan = self.plan(files)
         graph = SymbolGraph()
         with ThreadPoolExecutor(max_workers=self._jobs) as pool:
             for lang, client in self._clients.items():
-                if files is not None:
-                    lang_files = [
-                        f for f in files
-                        if f.suffix in self.EXTENSIONS.get(lang, [])
-                        and not self._excluded(f)
-                    ]
-                else:
-                    lang_files = list(self._discover(lang))
-
+                lang_files = plan.get(lang, [])
                 total = len(lang_files)
                 log.info("Extracting %d %s files", total, lang)
 
