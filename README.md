@@ -12,7 +12,7 @@ go install golang.org/x/tools/gopls@latest
 
 # Architecture:
 - `lsp.py`: JSON-RPC client over stdio. Threads a reader, dispatches responses by ID, ignores server-initiated notifications (diagnostics, logs). Works with any LSP server. ~170 lines replacing whatever tree-sitter glue you had.
-- `extract.py`: Drives textDocument/documentSymbol per file, then textDocument/references and callHierarchy/outgoingCalls per interesting symbol (classes, functions, methods, structs). Flattens hierarchical DocumentSymbol responses into qualified names. Skips vendored dirs, `__pycache__`, .pb.go.
+- `extract.py`: Drives textDocument/documentSymbol per file, then textDocument/references and callHierarchy/outgoingCalls per interesting symbol (classes, functions, methods, structs). Flattens hierarchical DocumentSymbol responses into qualified names. Skips vendored dirs, `__pycache__`, .pb.go, and test code (`tests/`, `test/`, `testdata/`, `test_*.py`, `*_test.py`, `conftest.py`, `*_test.go`) unless `--include-tests` is given.
 - `graph.py`: Collapses symbol-level edges to file-level coupling (undirected, weighted by reference count). Runs Leiden with configurable resolution. Reports communities, modularity score, top coupling pairs.
 - `__main__.py` :Two modes: full extraction and --diff (incremental). Incremental loads a previous graph, re-extracts only the listed files, merges, re-runs Leiden.
 ## Usage on your workstation:
@@ -22,6 +22,8 @@ uv run codegraph /path/to/repo -o report.json --save-graph graph.json
 uv run codegraph /path/to/repo --diff src/changed.py --load-graph graph.json
 uv run codegraph /path/to/repo --resolution 2.0  # more granular communities
 uv run codegraph /path/to/repo --jobs 16         # more concurrent LSP lookups per file (default 8)
+uv run codegraph /path/to/repo --include-tests   # also index test code (skipped by default)
+uv run codegraph /path/to/repo --exclude 'examples/*' --exclude fakes  # skip more paths
 ```
 
 `--diff` paths are resolved against the repo root, not the current directory.

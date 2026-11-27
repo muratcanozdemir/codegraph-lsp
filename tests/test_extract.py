@@ -231,7 +231,54 @@ def test_discover_prunes_skipped_dirs_and_generated_files(tmp_path):
 
     found = [p.relative_to(tmp_path).as_posix() for p in ex._discover("go")]
 
-    assert found == ["a.go", "a_test.go", "pkg/b.go"]
+    assert found == ["a.go", "pkg/b.go"]
+
+
+def _touch(root, rels):
+    for rel in rels:
+        p = root / rel
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text("")
+
+
+_PY_TREE = ["src/pkg/core.py", "src/pkg/testing_utils.py", "src/pkg/test_core.py",
+            "src/pkg/core_test.py", "conftest.py", "tests/fake_server.py",
+            "pkg/testdata/sample.py", "examples/demo.py"]
+
+
+def test_discover_skips_test_code_by_default(tmp_path):
+    _touch(tmp_path, _PY_TREE)
+
+    found = [p.relative_to(tmp_path).as_posix() for p in Extractor({}, tmp_path)._discover("python")]
+
+    assert found == ["examples/demo.py", "src/pkg/core.py", "src/pkg/testing_utils.py"]
+
+
+def test_discover_include_tests_keeps_everything(tmp_path):
+    _touch(tmp_path, _PY_TREE)
+
+    ex = Extractor({}, tmp_path, include_tests=True)
+
+    assert len(list(ex._discover("python"))) == len(_PY_TREE)
+
+
+def test_discover_exclude_globs_match_path_or_component(tmp_path):
+    _touch(tmp_path, _PY_TREE)
+
+    ex = Extractor({}, tmp_path, exclude=["examples", "src/*/testing_*"])
+    found = [p.relative_to(tmp_path).as_posix() for p in ex._discover("python")]
+
+    assert found == ["src/pkg/core.py"]
+
+
+def test_extract_explicit_files_apply_the_same_filter(tmp_path):
+    _touch(tmp_path, ["src/a.py", "tests/test_a.py"])
+    client = _FakeClient(n_symbols=1, delay=0)
+
+    sg = Extractor({"python": client}, tmp_path).extract(
+        files=[tmp_path / "src/a.py", tmp_path / "tests/test_a.py"])
+
+    assert {s.file_path for s in sg.symbols} == {str((tmp_path / "src/a.py").resolve())}
 
 
 class _FakeClient:

@@ -8,6 +8,7 @@ a single list with qualified names.
 from __future__ import annotations
 
 import bisect
+import fnmatch
 import logging
 import os
 import sys
@@ -35,6 +36,19 @@ INTERESTING_KINDS = {5, 6, 9, 11, 12, 23}  # class, method, constructor, interfa
 
 # Directories never worth indexing (vendored, generated, environments).
 SKIP_DIRS = {"vendor", "node_modules", ".git", "__pycache__", ".venv", "venv"}
+
+# Test code is excluded by default: tests, fixtures and fake servers couple
+# to everything they exercise and drown out the source's own structure.
+TEST_DIRS = {"tests", "test", "testdata"}
+TEST_FILE_PATTERNS = ("test_*.py", "*_test.py", "conftest.py", "*_test.go")
+
+
+def is_test_path(rel: Path) -> bool:
+    """True for files under a test directory or named like a test module."""
+    if any(part in TEST_DIRS for part in rel.parts[:-1]):
+        return True
+    return any(fnmatch.fnmatchcase(rel.name, pat) for pat in TEST_FILE_PATTERNS)
+
 
 # end_line value for symbols whose extent is unknown (graphs saved before
 # extents were recorded).
@@ -161,10 +175,38 @@ class Extractor:
         "go": [".go"],
     }
 
-    def __init__(self, clients: dict[str, LSPClient], root: Path, jobs: int = 8) -> None:
+    def __init__(
+        self,
+        clients: dict[str, LSPClient],
+        root: Path,
+        jobs: int = 8,
+        include_tests: bool = False,
+        exclude: list[str] | None = None,
+    ) -> None:
         self._clients = clients  # language_id -> client
         self._root = root.resolve()
         self._jobs = max(1, jobs)
+        self._include_tests = include_tests
+        self._exclude = list(exclude or [])
+
+    def _excluded(self, path: Path) -> bool:
+        """Whether a file is filtered out (tests, or an --exclude glob).
+
+        Globs match the root-relative path (``*`` crosses ``/``) or any single
+        path component, so ``examples/*`` and ``fakes`` both work.
+        """
+        try:
+            rel = path.resolve().relative_to(self._root)
+        except ValueError:
+            rel = Path(path.name)
+        if not self._include_tests and is_test_path(rel):
+            return True
+        posix = rel.as_posix()
+        return any(
+            fnmatch.fnmatchcase(posix, pat)
+            or any(fnmatch.fnmatchcase(part, pat) for part in rel.parts)
+            for pat in self._exclude
+        )
 
     def extract(self, files: list[Path] | None = None) -> SymbolGraph:
         graph = SymbolGraph()
@@ -174,6 +216,7 @@ class Extractor:
                     lang_files = [
                         f for f in files
                         if f.suffix in self.EXTENSIONS.get(lang, [])
+                        and not self._excluded(f)
                     ]
                 else:
                     lang_files = list(self._discover(lang))
@@ -196,9 +239,12 @@ class Extractor:
             # prune in place so os.walk never descends into skipped trees
             dirnames[:] = sorted(d for d in dirnames if d not in SKIP_DIRS)
             for name in sorted(filenames):
-                # skip generated protobuf (Go test files are kept — they reveal coupling)
-                if name.endswith(exts) and not name.endswith(".pb.go"):
-                    yield Path(dirpath) / name
+                # skip generated protobuf
+                if not name.endswith(exts) or name.endswith(".pb.go"):
+                    continue
+                path = Path(dirpath) / name
+                if not self._excluded(path):
+                    yield path
 
     def _extract_file(
         self,

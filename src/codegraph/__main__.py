@@ -136,6 +136,16 @@ def main() -> None:
         help="Concurrent LSP lookups per file (default: 8; 1 = sequential)",
     )
     parser.add_argument(
+        "--include-tests", action="store_true",
+        help="Also index test code (tests/, test_*.py, conftest.py, *_test.go); "
+             "excluded by default",
+    )
+    parser.add_argument(
+        "--exclude", action="append", default=[], metavar="GLOB",
+        help="Skip files whose ROOT-relative path, or any path component, "
+             "matches GLOB (repeatable), e.g. --exclude 'examples/*' --exclude fakes",
+    )
+    parser.add_argument(
         "-v", "--verbose", action="store_true",
         help="Debug logging",
     )
@@ -159,7 +169,10 @@ def main() -> None:
 
     clients = _start_clients(servers, root)
     try:
-        extractor = Extractor(clients, root, jobs=args.jobs)
+        extractor = Extractor(
+            clients, root, jobs=args.jobs,
+            include_tests=args.include_tests, exclude=args.exclude,
+        )
 
         if args.diff:
             # incremental mode
