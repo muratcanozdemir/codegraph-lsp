@@ -17,7 +17,6 @@ from typing import Any
 
 log = logging.getLogger(__name__)
 
-_HEADER_SEP = b"\r\n\r\n"
 _CONTENT_LENGTH = "Content-Length"
 
 
@@ -38,6 +37,10 @@ class LSPClient:
         self._id = 0
         self._pending: dict[int, dict] = {}
         self._lock = threading.Lock()
+        # stdin is written from both the caller thread (requests) and the
+        # reader thread (replies to server requests); serialize the writes.
+        self._write_lock = threading.Lock()
+        self._closed = False
         self.capabilities = ServerCapabilities()
 
         self._proc = subprocess.Popen(
@@ -55,10 +58,17 @@ class LSPClient:
     def request(self, method: str, params: dict | None = None, timeout: float = 60) -> Any:
         event = threading.Event()
         with self._lock:
+            if self._closed:
+                raise ConnectionError(f"{self.language_id} language server has exited")
             self._id += 1
             rid = self._id
             self._pending[rid] = {"event": event, "result": None, "error": None}
-        self._send({"jsonrpc": "2.0", "id": rid, "method": method, "params": params or {}})
+        try:
+            self._send({"jsonrpc": "2.0", "id": rid, "method": method, "params": params or {}})
+        except OSError:
+            with self._lock:
+                self._pending.pop(rid, None)
+            raise
         if not event.wait(timeout=timeout):
             with self._lock:
                 self._pending.pop(rid, None)
@@ -170,43 +180,69 @@ class LSPClient:
         header = f"{_CONTENT_LENGTH}: {len(body)}\r\n\r\n".encode()
         stdin = self._proc.stdin
         assert stdin is not None
-        stdin.write(header + body)
-        stdin.flush()
+        with self._write_lock:
+            stdin.write(header + body)
+            stdin.flush()
 
     def _read_loop(self) -> None:
+        try:
+            self._read_messages()
+        finally:
+            self._fail_pending()
+
+    def _fail_pending(self) -> None:
+        """Server stream ended: wake every waiter now instead of letting each time out."""
+        with self._lock:
+            self._closed = True
+            pending = list(self._pending.values())
+        for entry in pending:
+            entry["error"] = {"message": "language server exited"}
+            entry["event"].set()
+
+    def _read_messages(self) -> None:
+        """Read framed messages: header lines, a blank line, then exactly
+        Content-Length bytes. readline()/read(n) on the buffered pipe keep this
+        linear in message size (no rescanning of a growing buffer)."""
         stdout = self._proc.stdout
         assert stdout is not None
-        buf = b""
         while True:
-            chunk = stdout.read1(4096)
-            if not chunk:
-                break
-            buf += chunk
-            while buf:
-                if _HEADER_SEP not in buf:
-                    break
-                header_end = buf.index(_HEADER_SEP)
-                header_block = buf[:header_end].decode()
-                content_length = None
-                for line in header_block.split("\r\n"):
-                    if line.startswith(_CONTENT_LENGTH):
-                        content_length = int(line.split(":", 1)[1].strip())
-                if content_length is None:
-                    buf = buf[header_end + len(_HEADER_SEP):]
-                    continue
-                body_start = header_end + len(_HEADER_SEP)
-                body_end = body_start + content_length
-                if len(buf) < body_end:
-                    break  # incomplete body, wait for more data
-                body = buf[body_start:body_end]
-                buf = buf[body_end:]
-                try:
-                    msg = json.loads(body)
-                except json.JSONDecodeError:
-                    continue
-                self._dispatch(msg)
+            content_length = None
+            while True:
+                line = stdout.readline()
+                if not line:
+                    return  # EOF
+                line = line.rstrip(b"\r\n")
+                if not line:
+                    break  # end of headers
+                name, _, value = line.decode("ascii", "replace").partition(":")
+                if name.strip().lower() == _CONTENT_LENGTH.lower():
+                    try:
+                        content_length = int(value.strip())
+                    except ValueError:
+                        content_length = None
+            if content_length is None:
+                continue  # headers without a usable length: skip to the next block
+            body = stdout.read(content_length)
+            if len(body) < content_length:
+                return  # EOF mid-body
+            try:
+                msg = json.loads(body)
+            except json.JSONDecodeError:
+                continue
+            self._dispatch(msg)
 
     def _dispatch(self, msg: dict) -> None:
+        if "method" in msg:
+            # Server-initiated request. Its id comes from the server's own
+            # numbering and can equal one of our pending ids, so it must be
+            # handled before response matching.
+            if "id" in msg:
+                self._send({
+                    "jsonrpc": "2.0", "id": msg["id"],
+                    "result": self._server_request_result(msg),
+                })
+            # otherwise a notification — ignore (diagnostics, logs, etc.)
+            return
         # response to our request
         if "id" in msg:
             with self._lock:
@@ -215,9 +251,12 @@ class LSPClient:
                 entry["result"] = msg.get("result")
                 entry["error"] = msg.get("error")
                 entry["event"].set()
-                return
-        # server-initiated request — respond with null
-        if "id" in msg and "method" in msg:
-            self._send({"jsonrpc": "2.0", "id": msg["id"], "result": None})
-            return
-        # notification — ignore (diagnostics, logs, etc.)
+
+    @staticmethod
+    def _server_request_result(msg: dict) -> Any:
+        # workspace/configuration must return one value per requested item;
+        # null entries mean "use your defaults".
+        if msg["method"] == "workspace/configuration":
+            items = (msg.get("params") or {}).get("items", [])
+            return [None] * len(items)
+        return None

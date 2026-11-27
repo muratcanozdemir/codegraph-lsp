@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import io
 import json
 import subprocess
 import threading
+import time
 
 import pytest
 
@@ -20,16 +22,29 @@ class FakeStdin:
         pass
 
 
-class FakeStdout:
-    """Yields pre-scripted chunks, then signals EOF with b""."""
+class _ChunkedRaw(io.RawIOBase):
+    """Raw pipe that delivers pre-scripted chunks, then EOF."""
 
     def __init__(self, chunks: list[bytes]):
         self._chunks = list(chunks)
 
-    def read1(self, _size: int) -> bytes:
+    def readable(self) -> bool:
+        return True
+
+    def readinto(self, buf) -> int:
         if not self._chunks:
-            return b""
-        return self._chunks.pop(0)
+            return 0
+        chunk = self._chunks.pop(0)
+        n = min(len(buf), len(chunk))
+        buf[:n] = chunk[:n]
+        if n < len(chunk):
+            self._chunks.insert(0, chunk[n:])
+        return n
+
+
+def FakeStdout(chunks: list[bytes]) -> io.BufferedReader:  # noqa: N802 - stands in for a class
+    # Same type as Popen's stdout, so the reader is exercised for real.
+    return io.BufferedReader(_ChunkedRaw(chunks))
 
 
 class FakeProc:
@@ -61,6 +76,8 @@ def make_client(stdout_chunks: list[bytes] | None = None) -> LSPClient:
     client._id = 0
     client._pending = {}
     client._lock = threading.Lock()
+    client._write_lock = threading.Lock()
+    client._closed = False
     client.capabilities = ServerCapabilities()
     client._proc = FakeProc(stdout_chunks)
     return client
@@ -177,6 +194,125 @@ def test_shutdown_kills_process_when_terminate_times_out():
 
     assert client._proc.terminated
     assert client._proc.killed
+
+
+def test_dispatch_server_request_with_colliding_id_does_not_complete_our_request():
+    # The server numbers its own requests; id 1 can be ours *and* theirs.
+    client = make_client()
+    sent = []
+    client._send = sent.append
+    event = threading.Event()
+    client._pending[1] = {"event": event, "result": None, "error": None}
+
+    client._dispatch({"jsonrpc": "2.0", "id": 1, "method": "client/registerCapability"})
+
+    assert not event.is_set()
+    assert sent == [{"jsonrpc": "2.0", "id": 1, "result": None}]
+
+
+def test_dispatch_answers_workspace_configuration_with_one_entry_per_item():
+    client = make_client()
+    sent = []
+    client._send = sent.append
+
+    client._dispatch({
+        "jsonrpc": "2.0", "id": 3, "method": "workspace/configuration",
+        "params": {"items": [{"section": "python"}, {"section": "python.analysis"}]},
+    })
+
+    assert sent == [{"jsonrpc": "2.0", "id": 3, "result": [None, None]}]
+
+
+def test_read_loop_eof_fails_pending_requests_immediately():
+    client = make_client(stdout_chunks=[])  # server stream ends at once
+    event = threading.Event()
+    client._pending[1] = {"event": event, "result": None, "error": None}
+
+    client._read_loop()
+
+    assert event.is_set()
+    assert client._pending[1]["error"] == {"message": "language server exited"}
+
+
+def test_request_after_server_exit_fails_fast():
+    client = make_client(stdout_chunks=[])
+    client._read_loop()
+
+    with pytest.raises(ConnectionError):
+        client.request("textDocument/references", timeout=60)
+
+    assert client._pending == {}
+
+
+def test_request_in_flight_when_server_exits_raises_instead_of_timing_out():
+    client = make_client()
+    client._send = lambda msg: client._fail_pending()  # server dies mid-request
+
+    with pytest.raises(RuntimeError, match="exited"):
+        client.request("textDocument/references", timeout=60)
+
+
+def test_send_serializes_concurrent_writers():
+    client = make_client()
+    stdin = client._proc.stdin
+
+    def write(data: bytes) -> None:
+        # yield the GIL between bytes so unlocked writers would interleave
+        for i in range(len(data)):
+            stdin.written += data[i:i + 1]
+            time.sleep(0)
+
+    stdin.write = write
+    msgs = [{"jsonrpc": "2.0", "id": i, "result": "x" * 50} for i in range(8)]
+    threads = [threading.Thread(target=client._send, args=(m,)) for m in msgs]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    assert sorted(stdin.written.split(b"Content-Length")[1:]) == sorted(
+        _frame(m)[len(b"Content-Length"):] for m in msgs
+    )
+
+
+def test_read_loop_handles_large_body_split_into_many_chunks():
+    msg = {"jsonrpc": "2.0", "id": 1, "result": ["x" * 100] * 2000}  # ~200 KB
+    framed = _frame(msg)
+    chunks = [framed[i:i + 4096] for i in range(0, len(framed), 4096)]
+    client = make_client(stdout_chunks=chunks)
+    dispatched = []
+    client._dispatch = dispatched.append
+
+    client._read_loop()
+
+    assert dispatched == [msg]
+
+
+def test_read_loop_accepts_extra_headers_and_any_header_case():
+    body = json.dumps({"jsonrpc": "2.0", "id": 1, "result": 1}).encode()
+    framed = (
+        b"content-length: " + str(len(body)).encode() + b"\r\n"
+        b"Content-Type: application/vscode-jsonrpc; charset=utf-8\r\n\r\n" + body
+    )
+    client = make_client(stdout_chunks=[framed])
+    dispatched = []
+    client._dispatch = dispatched.append
+
+    client._read_loop()
+
+    assert dispatched == [{"jsonrpc": "2.0", "id": 1, "result": 1}]
+
+
+def test_read_loop_stops_cleanly_on_truncated_body():
+    framed = _frame({"jsonrpc": "2.0", "id": 1, "result": "abc"})
+    client = make_client(stdout_chunks=[framed[:-2]])
+    dispatched = []
+    client._dispatch = dispatched.append
+
+    client._read_loop()
+
+    assert dispatched == []
+    assert client._closed
 
 
 def test_call_hierarchy_uses_spec_method_names():
