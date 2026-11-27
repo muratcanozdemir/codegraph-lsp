@@ -44,7 +44,6 @@ exclude = [".*", "__*", "**/typings"]
 
 typeCheckingMode = "basic"
 stubPath = "typings"
-typeshedPath = "typings"
 pythonPlatform = "Linux"
 pythonVersion = "3.12"
 
