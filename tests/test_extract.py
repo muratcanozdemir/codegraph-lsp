@@ -338,3 +338,21 @@ def test_extract_with_one_job_is_sequential(tmp_path):
     Extractor({"python": client}, tmp_path, jobs=1).extract(files=[f])
 
     assert client.peak == 1
+
+
+def test_plan_lists_only_languages_with_files(tmp_path):
+    _touch(tmp_path, ["src/a.py", "tests/test_a.py", "vendor/v.go", "README.md"])
+
+    plan = Extractor({}, tmp_path).plan()
+
+    assert {lang: [p.relative_to(tmp_path).as_posix() for p in fs] for lang, fs in plan.items()} \
+        == {"python": ["src/a.py"]}
+
+
+def test_plan_of_given_files_splits_by_language_and_filters(tmp_path):
+    _touch(tmp_path, ["a.py", "b.go", "b_test.go", "c.txt"])
+    files = [tmp_path / n for n in ("a.py", "b.go", "b_test.go", "c.txt")]
+
+    plan = Extractor({}, tmp_path).plan(files)
+
+    assert plan == {"python": [tmp_path / "a.py"], "go": [tmp_path / "b.go"]}

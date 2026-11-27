@@ -3,8 +3,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import igraph as ig
+
 from codegraph.extract import Edge, Symbol, SymbolGraph
 from codegraph.graph import (
+    _fold_small,
     analyze,
     analyze_symbols,
     build_file_graph,
@@ -153,3 +156,47 @@ def test_symbol_graph_prefers_call_type_when_call_and_reference_coincide():
     assert g.ecount() == 1
     assert g.es[0]["type"] == "call"
     assert g.es[0]["weight"] == 2
+
+
+def _graph(n, edges):
+    g = ig.Graph(n=n, directed=False)
+    if edges:
+        g.add_edges([(a, b) for a, b, _ in edges])
+        g.es["weight"] = [w for _, _, w in edges]
+    return g
+
+
+def test_fold_small_joins_the_most_linked_community():
+    # 0-2 and 3-5 are communities; 6 links to both, more heavily to the second
+    g = _graph(7, [(0, 1, 1), (1, 2, 1), (3, 4, 1), (4, 5, 1), (6, 0, 1), (6, 3, 2)])
+    groups = _fold_small(g, [0, 0, 0, 1, 1, 1, 2], ["f"] * 7, min_size=3)
+    assert groups == [[0, 1, 2], [3, 4, 5, 6]]
+
+
+def test_fold_small_puts_an_unlinked_symbol_with_its_files_community():
+    # 6 has no links (a constructor only reached through its class); it shares b.py
+    g = _graph(7, [(0, 1, 1), (1, 2, 1), (3, 4, 1), (4, 5, 1)])
+    files = ["a.py"] * 3 + ["b.py"] * 3 + ["b.py"]
+    groups = _fold_small(g, [0, 0, 0, 1, 1, 1, 2], files, min_size=3)
+    assert groups == [[0, 1, 2], [3, 4, 5, 6]]
+
+
+def test_fold_small_keeps_what_has_nowhere_to_go_and_min_size_one_keeps_all():
+    g = _graph(4, [(0, 1, 1), (1, 2, 1)])
+    files = ["a.py"] * 3 + ["lonely.py"]
+    assert _fold_small(g, [0, 0, 0, 1], files, min_size=3) == [[0, 1, 2], [3]]
+    g2 = _graph(4, [(0, 1, 1), (2, 3, 1)])
+    assert _fold_small(g2, [0, 0, 1, 1], ["f"] * 4, min_size=1) == [[0, 1], [2, 3]]
+
+
+def test_analyze_symbols_folds_an_unlinked_symbol_into_its_file():
+    a, b, c = (_sym(n, "file:///a.py", line=i) for i, n in enumerate("abc"))
+    init = _sym("Init", "file:///a.py", line=9)
+    edges = [Edge(a, "file:///a.py", 1, "call"), Edge(b, "file:///a.py", 2, "call")]
+    sg = SymbolGraph(symbols=[a, b, c, init], edges=edges)
+
+    folded = analyze_symbols(sg)
+    kept = analyze_symbols(sg, min_size=1)
+
+    assert [{s["name"] for s in c["symbols"]} for c in folded] == [{"a", "b", "c", "Init"}]
+    assert len(kept) == 2

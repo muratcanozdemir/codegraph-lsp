@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import json
 import logging
-from collections import Counter
+from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -151,6 +151,56 @@ def _leiden(g: ig.Graph, resolution: float) -> leidenalg.VertexPartition.Mutable
     return leidenalg.find_partition(g, partition_type, **kwargs)
 
 
+def _fold_small(
+    g: ig.Graph, membership: list[int], files: list[str], min_size: int,
+) -> list[list[int]]:
+    """Merge communities smaller than min_size into a neighbour; returns the groups.
+
+    Leiden leaves symbols with no or few links as communities of their own (a
+    constructor reached only through its class, say), which say nothing about
+    coupling. Smallest first, each joins the community it has the heaviest links
+    to; one with no links joins the community holding most symbols of its files.
+    One with neither stays as it is.
+    """
+    member = list(membership)
+    weight = g.es["weight"] if g.ecount() else []
+    adjacency: list[list[tuple[int, float]]] = [[] for _ in range(g.vcount())]
+    for e, w in zip(g.es, weight, strict=True):
+        a, b = e.tuple
+        adjacency[a].append((b, w))
+        adjacency[b].append((a, w))
+
+    def groups() -> dict[int, list[int]]:
+        out: dict[int, list[int]] = {}
+        for v, c in enumerate(member):
+            out.setdefault(c, []).append(v)
+        return out
+
+    for cid in sorted(groups(), key=lambda c: (len(groups()[c]), c)):
+        nodes = groups().get(cid, [])
+        if not nodes or len(nodes) >= min_size:
+            continue
+        sizes = {c: len(vs) for c, vs in groups().items()}
+        links: dict[int, float] = defaultdict(float)
+        for v in nodes:
+            for u, w in adjacency[v]:
+                if member[u] != cid:
+                    links[member[u]] += w
+        if not links:
+            own = {files[v] for v in nodes}
+            for v, c in enumerate(member):
+                if c != cid and files[v] in own:
+                    links[c] += 1
+        if not links:
+            continue
+        # heaviest link; ties go to the larger community, then the lower id
+        target = max(links, key=lambda c: (links[c], sizes[c], -c))
+        for v in nodes:
+            member[v] = target
+
+    return [vs for _, vs in sorted(groups().items())]
+
+
 def build_file_graph(sg: SymbolGraph) -> ig.Graph:
     """Collapse symbol graph to file-level coupling graph."""
     file_edges: Counter[tuple[str, str]] = Counter()
@@ -244,6 +294,7 @@ def analyze(
     sg: SymbolGraph,
     root: Path | None = None,
     resolution: float = 1.0,
+    min_community_size: int = 3,
 ) -> AnalysisResult:
     """Run Leiden community detection on the file coupling graph."""
     g = build_file_graph(sg)
@@ -288,7 +339,9 @@ def analyze(
     ]
     coupling.sort(key=lambda c: -c.weight)
 
-    symbol_communities = analyze_symbols(sg, root=root, resolution=resolution, resolved=resolved)
+    symbol_communities = analyze_symbols(
+        sg, root=root, resolution=resolution, resolved=resolved, min_size=min_community_size,
+    )
 
     return AnalysisResult(
         communities=communities,
@@ -315,8 +368,13 @@ def analyze_symbols(
     call_weight: float = 3.0,
     ref_weight: float = 1.0,
     resolved: Resolved | None = None,
+    min_size: int = 3,
 ) -> list[dict]:
-    """Leiden on the symbol-level graph. Returns communities of functions/classes."""
+    """Leiden on the symbol-level graph. Returns communities of functions/classes.
+
+    Communities smaller than ``min_size`` symbols are folded into a neighbour
+    (see ``_fold_small``); ``min_size=1`` keeps Leiden's partition as is.
+    """
     if resolved is None:
         resolved = resolve_edges(sg)
 
@@ -343,9 +401,10 @@ def analyze_symbols(
     g.es["weight"] = [edge_data[e] for e in edges]
 
     partition = _leiden(g, resolution)
+    groups = _fold_small(g, partition.membership, [s.uri for s in all_syms], min_size)
 
     communities = []
-    for cid, members in enumerate(partition):
+    for cid, members in enumerate(groups):
         syms = [
             {
                 "id": _symbol_id(all_syms[m], root),
