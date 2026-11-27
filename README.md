@@ -39,8 +39,36 @@ python3 scripts/visualise.py report.json | sfdp -Tsvg -o codegraph.svg
 
 <img src="./codegraph.svg">
 
+Drawing every symbol stops being readable at a few hundred nodes (a 22k-line Go CLI already gives 1,200 nodes and 3,500 edges), so `--level` chooses what one node stands for:
+
+| `--level` | One node per | Edges |
+|---|---|---|
+| `symbol` | function, class, struct… | references with weight ≥ 2, and all calls |
+| `file` | file, coloured by the community most of its symbols are in | summed weight between files |
+| `community` | symbol community, labelled with its main files | summed weight between communities |
+| `auto` (default) | `symbol` up to `--max-nodes` (300) drawn nodes, `community` beyond | |
+
+In the `file` and `community` views a link is drawn only if it is one of the `--top` (default 3) heaviest of one of its ends; a caption counts the ones left out. To zoom into one community:
+
+```bash
+python3 scripts/visualise.py report.json --level community --link 'codegraph-c{id}.svg' | sfdp -Tsvg -o codegraph.svg
+python3 scripts/visualise.py report.json --community 3 --hubs 5 | sfdp -Tsvg -o codegraph-c3.svg
+python3 scripts/visualise.py report.json --drilldowns   # ids of communities worth a page (>= --min-size symbols)
+```
+
+`--community N` draws that community's symbols plus one stub per community it links to, with the link weight in each direction. `--hubs K` leaves out the K symbols with the most dependents (the `Client`/`Ctx` types everything touches) and lists them in a legend instead of letting them pull every edge into the middle. `--link` makes each community in the overview a hyperlink to its page; it works when the SVG is opened directly, not through a README `<img>`.
+
+### Across several repos
+
+`scripts/codegraph-svg.sh` renders `codegraph.svg` for each repo it is given and adds a "Call graph" section to that repo's README if it doesn't link the SVG yet. For a graph too large to draw symbol by symbol it writes the community overview there and one page per community under `docs/` (`docs/codegraph-cN.svg`, replacing earlier ones; `--pages DIR` to move them), linked from the overview. Nothing is committed.
+
+```bash
+scripts/codegraph-svg.sh ~/src/repo-a ~/src/repo-b
+scripts/codegraph-svg.sh --root src/pkg --svg docs/graph.svg --pages docs/graph ~/src/repo-c
+```
+
 Nodes colored by _Leiden community_, edge thickness scaled by coupling weight. `sfdp` over `dot` because force-directed handles coupling graphs without a natural hierarchy better: `dot` tries to find a DAG ranking that doesn't exist here.
-If the graph is small enough that you want labeled edges: append `label={e['weight']}` inside the edge attributes. If it's huge and the SVG is unreadable, swap `sfdp` for `neato -Gstart=random` and crank iterations, or add `-Goverlap=false -Gsep=+10` to spread nodes.
+Symbol views use curved edges (`splines=curved`): graphviz's obstacle-avoiding `splines=true` takes 20s on 300 symbols and minutes on 1,000, against well under a second. The `file` and `community` views are small enough to keep it.
 
 ## Known tradeoffs you'll hit:
 - The initial extraction is O(interesting_symbols) LSP round-trips, issued concurrently per file (`--jobs`). For a large repo that could still be minutes on first run. Subsequent `--diff` runs are fast :only changed files get re-queried.
