@@ -6,7 +6,7 @@
 #   --svg PATH    output path, relative to each repo (default: codegraph.svg)
 #   --pages DIR   where per-community SVGs go, relative to each repo (default: docs)
 #
-# Small graphs are drawn symbol by symbol. Larger ones (see visualise.py --max-nodes) get
+# Small graphs are drawn symbol by symbol. Larger ones (see codegraph-dot --max-nodes) get
 # one node per community in PATH, each linking to DIR/NAME-cN.svg (NAME: PATH's file name
 # without .svg), which draws that community's symbols with its 5 busiest hubs listed in a
 # legend. Earlier DIR/NAME-c*.svg files are replaced.

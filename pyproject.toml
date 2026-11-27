@@ -1,14 +1,39 @@
 [project]
-name = "codegraph"
-version = "0.1.0"
+name = "codegraph-lsp"
+version = "0.0.0"
+description = "Code coupling graphs from your LSP servers (gopls, pyright), clustered with Leiden"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Murat Can Ozdemir" }]
 requires-python = ">=3.12"
+keywords = ["lsp", "call-graph", "coupling", "leiden", "gopls", "pyright", "graphviz"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: POSIX",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Quality Assurance",
+]
 dependencies = [
     "igraph>=0.11",
     "leidenalg>=0.10",
 ]
 
+[project.urls]
+Homepage = "https://github.com/muratcanozdemir/codegraph-lsp"
+Repository = "https://github.com/muratcanozdemir/codegraph-lsp"
+Issues = "https://github.com/muratcanozdemir/codegraph-lsp/issues"
+Changelog = "https://github.com/muratcanozdemir/codegraph-lsp/blob/main/CHANGELOG.md"
+
 [project.scripts]
 codegraph = "codegraph.__main__:main"
+codegraph-dot = "codegraph.dot:main"
 
 [dependency-groups]
 dev = [
@@ -17,7 +42,7 @@ dev = [
 ]
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]

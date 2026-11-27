@@ -1,10 +1,10 @@
 version = 1
-revision = 5
+revision = 3
 requires-python = ">=3.12"
 
 [[package]]
-name = "codegraph"
-version = "0.1.0"
+name = "codegraph-lsp"
+version = "0.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "igraph" },

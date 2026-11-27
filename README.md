@@ -1,6 +1,14 @@
 Two external deps (igraph, leidenalg), zero parsing code.
 
-This is CodeGraph, implemented with LSP servers. The idea is to utilize LSP output (which you probably already configured for auto-complete, syntax highlighting etc) and provide network analysis on your code. This should be a fine addition to your Claude skills. Currently only supports `gopls` and `pyright-langserver`. Install them
+This is CodeGraph, implemented with LSP servers. The idea is to utilize LSP output (which you probably already configured for auto-complete, syntax highlighting etc) and provide network analysis on your code. This should be a fine addition to your Claude skills. Currently only supports `gopls` and `pyright-langserver`.
+
+## Install
+
+```bash
+uv tool install codegraph-lsp   # or: pipx install codegraph-lsp
+```
+
+This gives you two commands: `codegraph` (extraction and analysis) and `codegraph-dot` (renders a report for Graphviz). Rendering SVGs also needs Graphviz (`sfdp`). The LSP servers for your languages have to be on `PATH`:
 
 ```bash
 # Python — pyright via uv
@@ -15,7 +23,9 @@ go install golang.org/x/tools/gopls@latest
 - `extract.py`: Drives textDocument/documentSymbol per file, then textDocument/references and callHierarchy/outgoingCalls per interesting symbol (classes, functions, methods, structs). Flattens hierarchical DocumentSymbol responses into qualified names. Skips vendored dirs, `__pycache__`, .pb.go, and test code (`tests/`, `test/`, `testdata/`, `test_*.py`, `*_test.py`, `conftest.py`, `*_test.go`) unless `--include-tests` is given.
 - `graph.py`: Collapses symbol-level edges to file-level coupling (undirected, weighted by reference count). Runs Leiden with configurable resolution. Reports communities, modularity score, top coupling pairs.
 - `__main__.py` :Two modes: full extraction and --diff (incremental). Incremental loads a previous graph, re-extracts only the listed files, merges, re-runs Leiden.
+- `dot.py`: The `codegraph-dot` command: renders a report as Graphviz dot, at symbol, file or community level (see Visualisation).
 ## Usage on your workstation:
+Installed, run `codegraph` directly; from a checkout, through `uv run` as below.
 ```bash
 uv run codegraph /path/to/repo
 uv run codegraph /path/to/repo -o report.json --save-graph graph.json
@@ -39,10 +49,12 @@ In the report's `symbol_graph`, edges point from dependent to dependency (caller
 Needs graphviz
 
 ```bash
-python3 scripts/visualise.py report.json | sfdp -Tsvg -o codegraph.svg
+codegraph-dot report.json | sfdp -Tsvg -o codegraph.svg
 ```
 
-<img src="./codegraph.svg">
+From a checkout without installing, `python3 scripts/visualise.py` takes the same arguments.
+
+<img src="https://raw.githubusercontent.com/muratcanozdemir/codegraph-lsp/main/codegraph.svg">
 
 Drawing every symbol stops being readable at a few hundred nodes (a 22k-line Go CLI already gives 1,200 nodes and 3,500 edges), so `--level` chooses what one node stands for:
 
@@ -56,9 +68,9 @@ Drawing every symbol stops being readable at a few hundred nodes (a 22k-line Go 
 In the `file` and `community` views a link is drawn only if it is one of the `--top` (default 3) heaviest of one of its ends; a caption counts the ones left out. To zoom into one community:
 
 ```bash
-python3 scripts/visualise.py report.json --level community --link 'codegraph-c{id}.svg' | sfdp -Tsvg -o codegraph.svg
-python3 scripts/visualise.py report.json --community 3 --hubs 5 | sfdp -Tsvg -o codegraph-c3.svg
-python3 scripts/visualise.py report.json --drilldowns   # ids of communities worth a page (>= --min-size symbols)
+codegraph-dot report.json --level community --link 'codegraph-c{id}.svg' | sfdp -Tsvg -o codegraph.svg
+codegraph-dot report.json --community 3 --hubs 5 | sfdp -Tsvg -o codegraph-c3.svg
+codegraph-dot report.json --drilldowns   # ids of communities worth a page (>= --min-size symbols)
 ```
 
 `--community N` draws that community's symbols plus one stub per community it links to, with the link weight in each direction. `--hubs K` leaves out the K symbols with the most dependents (the `Client`/`Ctx` types everything touches) and lists them in a legend instead of letting them pull every edge into the middle. `--link` makes each community in the overview a hyperlink to its page; it works when the SVG is opened directly, not through a README `<img>`.

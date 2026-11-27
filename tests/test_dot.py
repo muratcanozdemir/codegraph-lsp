@@ -1,14 +1,8 @@
 from __future__ import annotations
 
-import importlib.util
 import json
-from pathlib import Path
 
-_spec = importlib.util.spec_from_file_location(
-    "visualise", Path(__file__).parent.parent / "scripts" / "visualise.py")
-assert _spec and _spec.loader
-vis = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(vis)
+from codegraph import dot as vis
 
 
 def _edge(s, t, w=1, typ="call", kind="function"):
