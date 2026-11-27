@@ -78,3 +78,23 @@ def test_find_servers_filters_to_available_binaries(monkeypatch):
     servers = cli._find_servers()
 
     assert list(servers) == ["python"]
+
+
+def test_version_flag_prints_version(monkeypatch, capsys):
+    monkeypatch.setattr(sys, "argv", ["codegraph", "--version"])
+
+    with pytest.raises(SystemExit) as exc:
+        cli.main()
+
+    assert exc.value.code == 0
+    assert capsys.readouterr().out.startswith("codegraph ")
+
+
+def test_jobs_must_be_positive(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(sys, "argv", ["codegraph", str(tmp_path), "--jobs", "0"])
+
+    with pytest.raises(SystemExit) as exc:
+        cli.main()
+
+    assert exc.value.code == 2
+    assert "must be >= 1" in capsys.readouterr().err

@@ -108,3 +108,48 @@ def test_analyze_symbols_groups_coupled_symbols_together():
     names = {s["name"] for s in communities[0]["symbols"]}
     assert names == {"a", "b"}
     assert communities[0]["cohesion"] > 0
+
+
+def test_symbol_graph_edges_carry_unique_ids_for_same_named_symbols(tmp_path):
+    root = tmp_path
+    a = Symbol(uri=(root / "a.go").as_uri(), name="main", qualified_name="main",
+               kind=12, line=0, character=0, language="go")
+    b = Symbol(uri=(root / "b.go").as_uri(), name="main", qualified_name="main",
+               kind=12, line=0, character=0, language="go")
+    sg = SymbolGraph([a, b], [Edge(a, b.uri, 0, "call")])
+
+    result = analyze(sg, root=root)
+
+    (edge,) = result.symbol_graph
+    assert (edge["source_id"], edge["target_id"]) == ("a.go::main", "b.go::main")
+    ids = {s["id"] for c in result.symbol_communities for s in c["symbols"]}
+    assert ids == {"a.go::main", "b.go::main"}
+
+
+def test_reported_paths_are_percent_decoded_and_root_relative(tmp_path):
+    root = tmp_path / "my repo"
+    a = Symbol(uri=(root / "a.py").as_uri(), name="a", qualified_name="a",
+               kind=12, line=0, character=0, language="python")
+    b = Symbol(uri=(root / "b.py").as_uri(), name="b", qualified_name="b",
+               kind=12, line=0, character=0, language="python")
+    sg = SymbolGraph([a, b], [Edge(a, b.uri, 0, "call")])
+
+    result = analyze(sg, root=root)
+
+    files = {s["file"] for c in result.symbol_communities for s in c["symbols"]}
+    assert files == {"a.py", "b.py"}
+
+
+def test_symbol_graph_prefers_call_type_when_call_and_reference_coincide():
+    caller = _sym("caller", "file:///a.py")
+    callee = _sym("callee", "file:///b.py")
+    sg = SymbolGraph([caller, callee], [
+        Edge(caller, "file:///b.py", 0, "call"),        # caller -> callee
+        Edge(callee, "file:///a.py", 0, "reference"),   # callee used in caller
+    ])
+
+    g = build_symbol_graph(sg)
+
+    assert g.ecount() == 1
+    assert g.es[0]["type"] == "call"
+    assert g.es[0]["weight"] == 2

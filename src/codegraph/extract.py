@@ -7,11 +7,15 @@ a single list with qualified names.
 
 from __future__ import annotations
 
+import bisect
 import logging
+import os
 import sys
 from collections.abc import Iterator
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 from codegraph.lsp import LSPClient
 
@@ -29,6 +33,20 @@ SYMBOL_KIND_NAMES = {
 # Only extract symbols likely to produce meaningful coupling edges
 INTERESTING_KINDS = {5, 6, 9, 11, 12, 23}  # class, method, constructor, interface, function, struct
 
+# Directories never worth indexing (vendored, generated, environments).
+SKIP_DIRS = {"vendor", "node_modules", ".git", "__pycache__", ".venv", "venv"}
+
+# end_line value for symbols whose extent is unknown (graphs saved before
+# extents were recorded).
+UNKNOWN_END = -1
+
+
+def uri_to_path(uri: str) -> str:
+    """file:// URI -> filesystem path, percent-decoded. Non-URIs pass through."""
+    if not uri.startswith("file://"):
+        return uri
+    return unquote(urlparse(uri).path)
+
 
 @dataclass(frozen=True)
 class Symbol:
@@ -39,6 +57,7 @@ class Symbol:
     line: int
     character: int
     language: str
+    end_line: int = UNKNOWN_END  # last line of the symbol's full range
 
     @property
     def kind_name(self) -> str:
@@ -46,15 +65,24 @@ class Symbol:
 
     @property
     def file_path(self) -> str:
-        """Strip file:// prefix."""
-        uri = self.uri
-        if uri.startswith("file://"):
-            uri = uri[7:]
-        return uri
+        return uri_to_path(self.uri)
+
+    def contains_line(self, line: int) -> bool:
+        if self.end_line == UNKNOWN_END:
+            return line >= self.line
+        return self.line <= line <= self.end_line
 
 
 @dataclass
 class Edge:
+    """A raw LSP observation, before resolution to symbols.
+
+    "call": ``source`` calls whatever lives at the target location.
+    "reference": ``source`` is *used* at the target location (the target
+    depends on ``source``). resolve_edges() flips these so resolved edges
+    always point from dependent to dependency.
+    """
+
     source: Symbol
     target_uri: str
     target_line: int
@@ -75,6 +103,7 @@ class SymbolGraph:
                     "kind": s.kind, "kind_name": s.kind_name,
                     "language": s.language,
                     "line": s.line, "character": s.character,
+                    "end_line": s.end_line,
                 }
                 for s in self.symbols
             ],
@@ -92,20 +121,28 @@ class SymbolGraph:
 
     @classmethod
     def from_dict(cls, data: dict, language: str = "") -> SymbolGraph:
+        """Rebuild a graph from to_dict() output.
+
+        ``language`` is only a fallback for graphs saved without a per-symbol
+        language field.
+        """
         symbols = [
             Symbol(
                 uri=s["uri"], name=s["name"],
                 qualified_name=s["qualified_name"],
                 kind=s.get("kind", 0), line=s["line"],
                 character=s.get("character", 0),
-                language=language,
+                language=s.get("language") or language,
+                end_line=s.get("end_line", UNKNOWN_END),
             )
             for s in data.get("symbols", [])
         ]
-        sym_by_qn = {s.qualified_name: s for s in symbols}
+        # qualified names are only unique within a file (e.g. `main` in many
+        # Go packages), so edges are matched on (uri, qualified_name).
+        sym_by_key = {(s.uri, s.qualified_name): s for s in symbols}
         edges = []
         for e in data.get("edges", []):
-            src = sym_by_qn.get(e["source_qualified"])
+            src = sym_by_key.get((e.get("source_uri", ""), e["source_qualified"]))
             if src:
                 edges.append(Edge(
                     source=src,
@@ -124,43 +161,44 @@ class Extractor:
         "go": [".go"],
     }
 
-    def __init__(self, clients: dict[str, LSPClient], root: Path) -> None:
+    def __init__(self, clients: dict[str, LSPClient], root: Path, jobs: int = 8) -> None:
         self._clients = clients  # language_id -> client
         self._root = root.resolve()
+        self._jobs = max(1, jobs)
 
     def extract(self, files: list[Path] | None = None) -> SymbolGraph:
         graph = SymbolGraph()
-        for lang, client in self._clients.items():
-            if files is not None:
-                lang_files = [
-                    f for f in files
-                    if f.suffix in self.EXTENSIONS.get(lang, [])
-                ]
-            else:
-                lang_files = list(self._discover(lang))
+        with ThreadPoolExecutor(max_workers=self._jobs) as pool:
+            for lang, client in self._clients.items():
+                if files is not None:
+                    lang_files = [
+                        f for f in files
+                        if f.suffix in self.EXTENSIONS.get(lang, [])
+                    ]
+                else:
+                    lang_files = list(self._discover(lang))
 
-            total = len(lang_files)
-            log.info("Extracting %d %s files", total, lang)
+                total = len(lang_files)
+                log.info("Extracting %d %s files", total, lang)
 
-            for i, fpath in enumerate(lang_files, 1):
-                self._extract_file(client, fpath, lang, graph)
-                if i % 50 == 0 or i == total:
-                    print(f"  [{lang}] {i}/{total}", file=sys.stderr)
+                for i, fpath in enumerate(lang_files, 1):
+                    self._extract_file(client, fpath, lang, graph, pool)
+                    if i % 50 == 0 or i == total:
+                        print(f"  [{lang}] {i}/{total}", file=sys.stderr)
 
         return graph
 
     def _discover(self, language: str) -> Iterator[Path]:
-        exts = self.EXTENSIONS.get(language, [])
-        for ext in exts:
-            for p in self._root.rglob(f"*{ext}"):
-                # skip vendored / generated dirs
-                parts = p.relative_to(self._root).parts
-                if any(d in parts for d in ("vendor", "node_modules", ".git", "__pycache__", ".venv", "venv")):
-                    continue
+        exts = tuple(self.EXTENSIONS.get(language, []))
+        if not exts:
+            return
+        for dirpath, dirnames, filenames in os.walk(self._root):
+            # prune in place so os.walk never descends into skipped trees
+            dirnames[:] = sorted(d for d in dirnames if d not in SKIP_DIRS)
+            for name in sorted(filenames):
                 # skip generated protobuf (Go test files are kept — they reveal coupling)
-                if p.name.endswith(".pb.go"):
-                    continue
-                yield p
+                if name.endswith(exts) and not name.endswith(".pb.go"):
+                    yield Path(dirpath) / name
 
     def _extract_file(
         self,
@@ -168,6 +206,7 @@ class Extractor:
         fpath: Path,
         language: str,
         graph: SymbolGraph,
+        pool: ThreadPoolExecutor | None = None,
     ) -> None:
         uri = fpath.resolve().as_uri()
         try:
@@ -182,11 +221,16 @@ class Extractor:
             symbols = list(self._flatten_symbols(raw_symbols, uri, language))
             graph.symbols.extend(symbols)
 
-            for sym in symbols:
-                if sym.kind not in INTERESTING_KINDS:
-                    continue
-                self._extract_references(client, sym, graph)
-                self._extract_calls(client, sym, graph)
+            interesting = [s for s in symbols if s.kind in INTERESTING_KINDS]
+
+            def edges_for(sym: Symbol) -> list[Edge]:
+                return self._extract_references(client, sym) + self._extract_calls(client, sym)
+
+            # LSPClient multiplexes concurrent requests, so per-symbol lookups
+            # run in parallel; map() keeps the edge order deterministic.
+            results = pool.map(edges_for, interesting) if pool else map(edges_for, interesting)
+            for edges in results:
+                graph.edges.extend(edges)
         except Exception as exc:
             log.warning("Error extracting %s: %s", fpath, exc)
         finally:
@@ -206,8 +250,10 @@ class Extractor:
             # DocumentSymbol has selectionRange; SymbolInformation has location
             if "selectionRange" in item:
                 pos = item["selectionRange"]["start"]
+                full = item.get("range", item["selectionRange"])
             elif "location" in item:
-                pos = item["location"]["range"]["start"]
+                full = item["location"]["range"]
+                pos = full["start"]
                 uri = item["location"].get("uri", uri)
             else:
                 continue
@@ -217,6 +263,7 @@ class Extractor:
                 kind=item.get("kind", 0),
                 line=pos["line"], character=pos["character"],
                 language=language,
+                end_line=full.get("end", {}).get("line", UNKNOWN_END),
             )
             yield sym
 
@@ -224,32 +271,31 @@ class Extractor:
             for child in item.get("children", []):
                 yield from self._flatten_symbols([child], uri, language, prefix=qn)
 
-    def _extract_references(
-        self, client: LSPClient, sym: Symbol, graph: SymbolGraph,
-    ) -> None:
+    def _extract_references(self, client: LSPClient, sym: Symbol) -> list[Edge]:
         if not client.capabilities.references:
-            return
+            return []
         try:
             refs = client.references(sym.uri, sym.line, sym.character)
         except Exception:
-            return
-        for ref in refs:
-            graph.edges.append(Edge(
+            return []
+        return [
+            Edge(
                 source=sym,
                 target_uri=ref["uri"],
                 target_line=ref["range"]["start"]["line"],
                 edge_type="reference",
-            ))
+            )
+            for ref in refs
+        ]
 
-    def _extract_calls(
-        self, client: LSPClient, sym: Symbol, graph: SymbolGraph,
-    ) -> None:
+    def _extract_calls(self, client: LSPClient, sym: Symbol) -> list[Edge]:
         if not client.capabilities.call_hierarchy:
-            return
+            return []
         try:
             items = client.prepare_call_hierarchy(sym.uri, sym.line, sym.character)
         except Exception:
-            return
+            return []
+        edges = []
         for item in items:
             try:
                 outgoing = client.outgoing_calls(item)
@@ -257,35 +303,49 @@ class Extractor:
                 continue
             for call in outgoing:
                 to = call.get("to", {})
-                graph.edges.append(Edge(
+                edges.append(Edge(
                     source=sym,
                     target_uri=to.get("uri", ""),
                     target_line=to.get("range", {}).get("start", {}).get("line", 0),
                     edge_type="call",
                 ))
+        return edges
 
 
 def resolve_edges(sg: SymbolGraph) -> list[tuple[Symbol, Symbol, str]]:
-    """Map (uri, line) edge targets back to the nearest enclosing symbol."""
-    by_file: dict[str, list[tuple[int, Symbol]]] = {}
+    """Map (uri, line) edge targets to the innermost symbol containing that line.
+
+    Returned tuples are (dependent, dependency, type): call edges keep their
+    caller -> callee direction, reference edges are flipped from
+    definition -> use site to use site -> definition. Locations outside every
+    interesting symbol (e.g. module-level code) are dropped.
+    """
+    by_file: dict[str, list[Symbol]] = {}
     for s in sg.symbols:
-        if s.kind not in INTERESTING_KINDS:
-            continue
-        by_file.setdefault(s.uri, []).append((s.line, s))
-    for v in by_file.values():
-        v.sort(key=lambda x: x[0])
+        if s.kind in INTERESTING_KINDS:
+            by_file.setdefault(s.uri, []).append(s)
+    starts: dict[str, list[int]] = {}
+    for uri, syms in by_file.items():
+        syms.sort(key=lambda s: s.line)
+        starts[uri] = [s.line for s in syms]
 
     resolved = []
     for edge in sg.edges:
         candidates = by_file.get(edge.target_uri)
         if not candidates:
             continue
+        # walk back from the last symbol starting at/before the line; the
+        # first one whose range contains it is the innermost (nested symbols
+        # start later than their parents).
         best = None
-        for line, sym in candidates:
-            if line <= edge.target_line:
-                best = sym
-            else:
+        for i in range(bisect.bisect_right(starts[edge.target_uri], edge.target_line) - 1, -1, -1):
+            if candidates[i].contains_line(edge.target_line):
+                best = candidates[i]
                 break
-        if best and best != edge.source:
+        if best is None or best == edge.source:
+            continue
+        if edge.edge_type == "reference":
+            resolved.append((best, edge.source, edge.edge_type))
+        else:
             resolved.append((edge.source, best, edge.edge_type))
     return resolved

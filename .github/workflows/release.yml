@@ -21,6 +21,9 @@ jobs:
       - name: Lint (ruff)
         run: uv run ruff check .
 
+      - name: Type check (pyright)
+        run: uvx pyright@1.1.414 --pythonpath .venv/bin/python
+
       - name: Test (pytest)
         run: uv run pytest -v
 

@@ -23,6 +23,7 @@ import shutil
 import sys
 from pathlib import Path
 
+from codegraph import __version__
 from codegraph.extract import Extractor, SymbolGraph
 from codegraph.graph import analyze, save_report
 from codegraph.lsp import LSPClient
@@ -95,12 +96,20 @@ def _merge_incremental(
     )
 
 
+def _positive_int(value: str) -> int:
+    n = int(value)
+    if n < 1:
+        raise argparse.ArgumentTypeError("must be >= 1")
+    return n
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         prog="codegraph",
         description="LSP-backed codebase coupling analysis with Leiden clustering",
     )
     parser.add_argument("root", type=Path, help="Repository root")
+    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     parser.add_argument(
         "-o", "--output", type=Path, default=None,
         help="Write JSON report to this path",
@@ -115,11 +124,16 @@ def main() -> None:
     )
     parser.add_argument(
         "--diff", nargs="+", type=Path, default=None,
-        help="Only re-extract these files (incremental mode)",
+        help="Only re-extract these files (incremental mode); "
+             "relative paths are resolved against ROOT, not the current directory",
     )
     parser.add_argument(
         "--resolution", type=float, default=1.0,
         help="Leiden resolution parameter (higher = more communities)",
+    )
+    parser.add_argument(
+        "-j", "--jobs", type=_positive_int, default=8,
+        help="Concurrent LSP lookups per file (default: 8; 1 = sequential)",
     )
     parser.add_argument(
         "-v", "--verbose", action="store_true",
@@ -145,7 +159,7 @@ def main() -> None:
 
     clients = _start_clients(servers, root)
     try:
-        extractor = Extractor(clients, root)
+        extractor = Extractor(clients, root, jobs=args.jobs)
 
         if args.diff:
             # incremental mode
