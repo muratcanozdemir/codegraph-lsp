@@ -177,3 +177,17 @@ def test_shutdown_kills_process_when_terminate_times_out():
 
     assert client._proc.terminated
     assert client._proc.killed
+
+
+def test_call_hierarchy_uses_spec_method_names():
+    # The spec names are textDocument/prepareCallHierarchy and
+    # callHierarchy/outgoingCalls; servers reject anything else as unknown.
+    client = make_client()
+    client.capabilities = ServerCapabilities(call_hierarchy=True)
+    methods = []
+    client.request = lambda method, params=None, timeout=60: methods.append(method) or []
+
+    client.prepare_call_hierarchy("file:///a.py", 1, 2)
+    client.outgoing_calls({"name": "f"})
+
+    assert methods == ["textDocument/prepareCallHierarchy", "callHierarchy/outgoingCalls"]

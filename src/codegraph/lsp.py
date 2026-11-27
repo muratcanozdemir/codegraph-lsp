@@ -102,7 +102,7 @@ class LSPClient:
     def prepare_call_hierarchy(self, uri: str, line: int, character: int) -> list[dict]:
         if not self.capabilities.call_hierarchy:
             return []
-        result = self.request("callHierarchy/prepareCallHierarchy", {
+        result = self.request("textDocument/prepareCallHierarchy", {
             "textDocument": {"uri": uri},
             "position": {"line": line, "character": character},
         })
