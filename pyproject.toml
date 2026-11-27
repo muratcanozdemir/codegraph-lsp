@@ -1,6 +1,6 @@
 [project]
 name = "codegraph-lsp"
-version = "0.0.0"
+version = "0.1.0"
 description = "Code coupling graphs from your LSP servers (gopls, pyright), clustered with Leiden"
 readme = "README.md"
 license = "MIT"
